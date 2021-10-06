@@ -1,0 +1,47 @@
+﻿:root {
+    --background_color: #1f1f1f;
+    --Navbar: #1a1a1a;
+    --div: #1f1f1f;
+    --input: #76c5df;
+    --white: #ffffff;
+    transition: 0.5s;
+}
+
+body {
+    background-color: var(--background_color);
+    font-family: 'Roboto', sans-serif;
+    color: var(--white);
+    transition: 0.5s;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.titulo{
+
+}
+
+nav {
+    background-color: var(--Navbar);
+    position: absolute;
+    height: 100%;
+    width: 20rem;
+    padding: 1rem;
+}
+
+.nav-item {
+    cursor: pointer;
+    border-radius: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    transition:0.35s;
+    gap:15px;
+}
+
+    .nav-item:hover {
+        background-color: var(--div);
+    }
