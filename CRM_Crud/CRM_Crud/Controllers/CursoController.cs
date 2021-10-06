@@ -1,10 +1,10 @@
 ﻿using CRM_Crud.Models;
 using CRM_Crud.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CRM.Controllers
+namespace CRM_Crud.Controllers
 {
-    [ValidateAntiForgeryToken]
     public class CursoController : Controller
     {
         public ICursoRepository cursoRepository;
@@ -14,43 +14,40 @@ namespace CRM.Controllers
             cursoRepository = _cursoRepository;
         }
 
-        [HttpGet]
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            return View();
+            return View(cursoRepository.ListarCursos());
         }
 
-        [HttpGet]
-        public IActionResult Criar()
+        public ActionResult Criar()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Criar(Curso curso)
+        public ActionResult Criar(Curso curso)
         {
             cursoRepository.CriarCurso(curso);
-            return View();
+            return View("Index", cursoRepository.ListarCursos());
         }
 
-        [HttpGet]
-        public IActionResult Editar(int id)
+        public ActionResult Editar(int id)
         {
-            return View(cursoRepository.ListarUmCurso(id));
+            return View();
         }
 
         [HttpPut]
-        public IActionResult Editar(Curso curso)
+        [ValidateAntiForgeryToken]
+        public ActionResult Editar(int id, IFormCollection collection)
         {
-            cursoRepository.EditarCurso(curso);
+
             return View();
         }
 
-        [HttpDelete]
-        public IActionResult Deletar(int id)
+        public ActionResult Deletar(int id)
         {
             cursoRepository.DeletarCurso(id);
-            return View();
+            return View("Index", cursoRepository.ListarCursos());
         }
     }
 }

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CRM_Crud.Models.Curso>
+
+@{
+    ViewData["Title"] = "Curso";
+}
+
+<div class="item">
+    <div class="tablehead">
+        <h1>Cursos</h1>
+        <a asp-action="Criar"><img src="https://img.icons8.com/ios-filled/20/000000/add--v1.png" />Criar Novo</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.data_inicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.data_termino)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.periodo_letivo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.categoria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.qnt_de_inscricoes)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.data_inicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.data_termino)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.periodo_letivo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.categoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.qnt_de_inscricoes)
+                    </td>
+                    <td style="display:flex">
+                        <a asp-action="Editar" asp-route-id="@item.id"><img src="https://img.icons8.com/ios-glyphs/30/000000/edit--v1.png" /></a>
+                        <a asp-action="Deletar" asp-route-id="@item.id"><img src="https://img.icons8.com/color/30/000000/delete-sign--v1.png" /></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

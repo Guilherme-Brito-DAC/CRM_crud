@@ -1,0 +1,59 @@
+﻿@model CRM_Crud.Models.Curso
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="item">
+    <h4>Curso</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Criar" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="titulo" class="control-label"></label>
+                    <input asp-for="titulo" class="form-control" />
+                    <span asp-validation-for="titulo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="data_inicio" class="control-label"></label>
+                    <input asp-for="data_inicio" class="form-control" />
+                    <span asp-validation-for="data_inicio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="data_termino" class="control-label"></label>
+                    <input asp-for="data_termino" class="form-control" />
+                    <span asp-validation-for="data_termino" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="periodo_letivo" class="control-label"></label>
+                    <input asp-for="periodo_letivo" class="form-control" />
+                    <span asp-validation-for="periodo_letivo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Categoria</label>
+                    <select id="categoria" asp-for="categoria">
+                        <option value="@Categoria.Agendado">Agendado</option>
+                        <option value="@Categoria.ENEM">Enem</option>
+                        <option value="@Categoria.CRM4U">CRM4U</option>
+                        <option value="@Categoria.Tradicional">Tradicional</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="qnt_de_inscricoes" class="control-label"></label>
+                    <input asp-for="qnt_de_inscricoes" class="form-control" />
+                    <span asp-validation-for="qnt_de_inscricoes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="reset" value="Limpar" class="btn btn-primary" />
+                    <input type="submit" value="Criar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -26,19 +26,20 @@ namespace CRM_Crud.Models
         [Display(Name = "Periodo Letivo")]
         public string periodo_letivo { get; set; }
 
-        public enum categoria
-        {
-            ENEM,
-            CRM4U,
-            Agendado,
-            Tradicional
-        }
-
-        public DateTime data_criacao { get; set; }
+        [Required]
+        [Display(Name = "Categoria")]
+        public string categoria { get; set; }
 
         [Required]
-        [MinLength(1, ErrorMessage = "A quantidade minima de vagas é 1")]
         [Display(Name = "Quantidade máxima de inscrições")]
-        public int qnt_de_inscricoes = 100;
+        public int qnt_de_inscricoes { get; set; }
+    }
+
+    public enum Categoria
+    {
+        ENEM,
+        CRM4U,
+        Agendado,
+        Tradicional
     }
 }
