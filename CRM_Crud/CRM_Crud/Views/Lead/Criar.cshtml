@@ -1,0 +1,48 @@
+﻿@model CRM_Crud.Models.Lead
+
+@{
+    ViewData["Title"] = "Criar lead";
+}
+
+<div class="item">
+    <div class="tablehead">
+        <h1 class="titulomid">Curso</h1>
+        <a asp-action="Index">Voltar</a>
+    </div>
+    <hr />
+    <div class="form-mid">
+        <div class="col">
+            <form asp-action="Criar" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="nome" class="control-label"></label>
+                    <input asp-for="nome" class="form-control" />
+                    <span asp-validation-for="nome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="email" class="control-label"></label>
+                    <input asp-for="email" type="email" class="form-control" />
+                    <span asp-validation-for="email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="telefone" class="control-label"></label>
+                    <input asp-for="telefone" type="tel" class="form-control" />
+                    <span asp-validation-for="telefone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="cpf" class="control-label"></label>
+                    <input asp-for="cpf" class="form-control" />
+                    <span asp-validation-for="cpf" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="reset" value="Limpar" class="btn btn-secondary" />
+                    <input type="submit" value="Cadastrar" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

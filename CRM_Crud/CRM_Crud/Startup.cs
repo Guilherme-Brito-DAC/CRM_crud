@@ -58,7 +58,7 @@ namespace CRM_Crud
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Lead}/{action=Index}/{id?}");
             });
         }
     }

@@ -10,6 +10,11 @@ namespace CRM_Crud
         {
 
         }
-        public DbSet<CRM_Crud.Models.Curso> Curso { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Curso>().HasKey(t => t.id);
+            modelBuilder.Entity<Lead>().HasKey(t => t.id);
+        }
     }
 }

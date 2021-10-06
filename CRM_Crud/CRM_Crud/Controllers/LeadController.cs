@@ -1,10 +1,10 @@
 ﻿using CRM_Crud.Models;
 using CRM_Crud.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CRM.Controllers
+namespace CRM_Crud.Controllers
 {
-    [ValidateAntiForgeryToken]
     public class LeadController : Controller
     {
         public ILeadRepository LeadRepository;
@@ -14,43 +14,41 @@ namespace CRM.Controllers
             LeadRepository = _LeadRepository;
         }
 
-        [HttpGet]
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            return View();
+            return View(LeadRepository.ListarLeads());
         }
 
-        [HttpGet]
-        public IActionResult Criar()
+        public ActionResult Criar()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Criar(Lead Lead)
+        [ValidateAntiForgeryToken]
+        public ActionResult Criar(Lead Lead)
         {
             LeadRepository.CriarLead(Lead);
-            return View();
+            return View("Index", LeadRepository.ListarLeads());
         }
 
-        [HttpGet]
-        public IActionResult Editar(int id)
+        public ActionResult Editar(int id)
         {
             return View(LeadRepository.ListarUmLead(id));
         }
 
-        [HttpPut]
-        public IActionResult Editar(Lead Lead)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editar(Lead Lead)
         {
             LeadRepository.EditarLead(Lead);
-            return View();
+            return View("Index", LeadRepository.ListarLeads());
         }
 
-        [HttpDelete]
-        public IActionResult Deletar(int id)
+        public ActionResult Deletar(int id)
         {
             LeadRepository.DeletarLead(id);
-            return View();
+            return View("Index", LeadRepository.ListarLeads());
         }
     }
 }
