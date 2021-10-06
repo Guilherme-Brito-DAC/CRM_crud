@@ -149,7 +149,6 @@ body {
 
 .titulomid {
     font-size: 30px;
-    text-align:center;
 }
 
 a{
@@ -169,19 +168,5 @@ a{
 }
 
 .control-label{
-    font-size:18px;
-    margin-bottom:0.2rem;
-}
-
-.criar {
-    border-radius: 10px;
-    padding: 0.7rem;
-    background-color: #0bd425;
-    text-decoration:none;
-    color:#fff;
-}
-
-.criar:hover {
-    text-decoration: none;
-    color: #fff;
+    font-size:15px;
 }

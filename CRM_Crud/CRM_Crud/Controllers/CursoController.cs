@@ -25,6 +25,7 @@ namespace CRM_Crud.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Criar(Curso curso)
         {
             cursoRepository.CriarCurso(curso);
@@ -33,15 +34,15 @@ namespace CRM_Crud.Controllers
 
         public ActionResult Editar(int id)
         {
-            return View();
+            return View(cursoRepository.ListarUmCurso(id));
         }
 
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, IFormCollection collection)
+        public ActionResult Editar(Curso curso)
         {
-
-            return View();
+            cursoRepository.EditarCurso(curso);
+            return View("Index", cursoRepository.ListarCursos());
         }
 
         public ActionResult Deletar(int id)
