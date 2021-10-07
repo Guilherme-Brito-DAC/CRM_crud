@@ -22,8 +22,8 @@ namespace CRM_Crud.Models
         public string telefone { get; set; }
         [Display(Name = "CPF")]
         [Required(ErrorMessage = "CPF é obrigatório")]
-        [MinLength(11, ErrorMessage = "O Telefone tem que possuir 11 caracteres")]
-        [MaxLength(11, ErrorMessage = "O Telefone tem que possuir 11 caractéres")]
+        [MinLength(11, ErrorMessage = "O CPF tem que possuir 11 caracteres")]
+        [MaxLength(11, ErrorMessage = "O CPF tem que possuir 11 caractéres")]
         public string cpf { get; set; }
     }
 }

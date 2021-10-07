@@ -6,7 +6,7 @@
 
 <div class="item">
     <div class="tablehead">
-        <h1 class="titulomid">Curso</h1>
+        <h1 class="titulomid">Lead</h1>
         <a asp-action="Index">Voltar</a>
     </div>
     <hr />
@@ -43,6 +43,8 @@
     </div>
 </div>
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/navbar.js"></script>
+}

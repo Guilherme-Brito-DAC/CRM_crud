@@ -2,6 +2,7 @@
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace CRM_Crud.Controllers
 {
@@ -14,9 +15,14 @@ namespace CRM_Crud.Controllers
             cursoRepository = _cursoRepository;
         }
 
+        public IList<Curso> ListarCursos()
+        {
+            return cursoRepository.ListarCursos();
+        }
+
         public ActionResult Index()
         {
-            return View(cursoRepository.ListarCursos());
+            return View(ListarCursos());
         }
 
         public ActionResult Criar()
@@ -29,7 +35,7 @@ namespace CRM_Crud.Controllers
         public ActionResult Criar(Curso curso)
         {
             cursoRepository.CriarCurso(curso);
-            return View("Index", cursoRepository.ListarCursos());
+            return View("Index", ListarCursos());
         }
 
         public ActionResult Editar(int id)
@@ -42,13 +48,13 @@ namespace CRM_Crud.Controllers
         public ActionResult Editar(Curso curso)
         {
             cursoRepository.EditarCurso(curso);
-            return View("Index", cursoRepository.ListarCursos());
+            return View("Index", ListarCursos());
         }
 
         public ActionResult Deletar(int id)
         {
             cursoRepository.DeletarCurso(id);
-            return View("Index", cursoRepository.ListarCursos());
+            return View("Index", ListarCursos());
         }
     }
 }

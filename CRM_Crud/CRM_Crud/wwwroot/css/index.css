@@ -13,6 +13,7 @@ body {
     background: #e7e7e7;
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
+    display:block;
 }
 
 .wrapper .top_navbar {
@@ -119,25 +120,26 @@ body {
     line-height: 22px;
 }
 
-.wrapper.collapse .sidebar {
+.wrapper.colapse .sidebar {
     width: 70px;
 }
 
-.wrapper.collapse .sidebar ul li a {
+.wrapper.colapse .sidebar ul li a {
     text-align: center;
 }
 
-.wrapper.collapse .sidebar ul li a span.icon {
+.wrapper.colapse .sidebar ul li a span.icon {
     margin: 0;
 }
 
-.wrapper.collapse .sidebar ul li a span.title {
+.wrapper.colapse .sidebar ul li a span.title {
     display: none;
 }
 
-.wrapper.collapse .main_container {
-    width: 100%;
+.wrapper.colapse .main_container {
+    width: calc(100% - 70px);
     margin-left: 70px;
+    display: block;
 }
 
 .tablehead{

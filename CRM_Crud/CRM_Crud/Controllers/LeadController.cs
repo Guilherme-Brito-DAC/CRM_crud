@@ -2,6 +2,7 @@
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace CRM_Crud.Controllers
 {
@@ -14,9 +15,14 @@ namespace CRM_Crud.Controllers
             LeadRepository = _LeadRepository;
         }
 
+        public IList<Lead> ListarLeads()
+        {
+            return LeadRepository.ListarLeads();
+        }
+
         public ActionResult Index()
         {
-            return View(LeadRepository.ListarLeads());
+            return View(ListarLeads());
         }
 
         public ActionResult Criar()
@@ -29,7 +35,7 @@ namespace CRM_Crud.Controllers
         public ActionResult Criar(Lead Lead)
         {
             LeadRepository.CriarLead(Lead);
-            return View("Index", LeadRepository.ListarLeads());
+            return View("Index", ListarLeads());
         }
 
         public ActionResult Editar(int id)
@@ -42,13 +48,13 @@ namespace CRM_Crud.Controllers
         public ActionResult Editar(Lead Lead)
         {
             LeadRepository.EditarLead(Lead);
-            return View("Index", LeadRepository.ListarLeads());
+            return View("Index", ListarLeads());
         }
 
         public ActionResult Deletar(int id)
         {
             LeadRepository.DeletarLead(id);
-            return View("Index", LeadRepository.ListarLeads());
+            return View("Index", ListarLeads());
         }
     }
 }

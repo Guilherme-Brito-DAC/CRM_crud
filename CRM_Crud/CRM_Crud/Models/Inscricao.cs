@@ -8,20 +8,28 @@ namespace CRM_Crud.Models
 {
     public class Inscricao : BaseModel
     {
-        [Required]
+        [Required(ErrorMessage = "O campo nome é obrigatório")]
         [MinLength(5, ErrorMessage = "O nome tem que possuir no mínimo 5 caractéres")]
         [MaxLength(250, ErrorMessage = "O nome tem que possuir menos que 250 caractéres")]
+        [Display(Name = "Nome")]
         public string nome { get; set; }
-        [Required]
+        [Display(Name = "Data")]
         public DateTime data { get; set; }
-        public int lead_id { get; set; }
+        [Required]
+        [Display(Name = "Curso")]
         public int curso_id { get; set; }
-        public enum status
-        {
-            Inscrito,
-            Classificado,
-            Convocado,
-            Matriculado
-        }
+        [Required]
+        [Display(Name = "Lead")]
+        public int lead_id { get; set; }
+        [Display(Name = "Status")]
+        public status status { get; set; }
+    }
+
+    public enum status
+    {
+        Inscrito,
+        Classificado,
+        Convocado,
+        Matriculado
     }
 }

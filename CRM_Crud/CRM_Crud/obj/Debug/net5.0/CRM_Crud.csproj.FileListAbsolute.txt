@@ -150,3 +150,5 @@ C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Vi
 C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Lead\Criar.cshtml.g.cs
 C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Lead\Editar.cshtml.g.cs
 C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\CRM_Crud.csproj.AssemblyReference.cache
+C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Inscricao\Index.cshtml.g.cs
+C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Inscricao\Criar.cshtml.g.cs

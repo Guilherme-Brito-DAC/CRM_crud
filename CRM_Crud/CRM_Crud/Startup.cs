@@ -28,6 +28,7 @@ namespace CRM_Crud
 
             services.AddTransient<ICursoRepository, CursoRepository>();
             services.AddTransient<ILeadRepository, LeadRepository>();
+            services.AddTransient<IInscricaoRepository, InscricaoRepository>();
 
             string connectionString = Configuration.GetConnectionString("Default");
 
