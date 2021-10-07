@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CRM_Crud.Models.Inscricao>
+
+@{
+    ViewData["Title"] = "Inscrições";
+}
+
+<div class="item">
+    <div class="tablehead">
+        <h1 class="titulomid">Inscrições</h1>
+        <a asp-action="Criar" class="criar">Criar Novo</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                    <td style="display:flex;gap:30px;">
+                        <a asp-action="Editar" asp-route-id="@item.id"><img src="https://img.icons8.com/ios-glyphs/30/edb10c/edit--v1.png" /></a>
+                        <a asp-action="Deletar" asp-route-id="@item.id"><img src="https://img.icons8.com/color/30/000000/delete-sign--v1.png" /></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/navbar.js"></script>
+}
