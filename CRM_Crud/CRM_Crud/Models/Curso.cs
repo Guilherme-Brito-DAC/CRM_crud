@@ -37,9 +37,9 @@ namespace CRM_Crud.Models
 
     public enum Categoria
     {
+        Agendado,
         ENEM,
         CRM4U,
-        Agendado,
         Tradicional
     }
 }

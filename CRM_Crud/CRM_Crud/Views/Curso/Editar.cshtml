@@ -21,13 +21,13 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="data_inicio" class="control-label"></label>
-                    <input asp-for="data_inicio" class="form-control" />
+                    <input asp-for="data_inicio" class="form-control" id="input_data_inicio" />
                     <span asp-validation-for="data_inicio" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="data_termino" class="control-label"></label>
-                    <input asp-for="data_termino" class="form-control" />
-                    <span asp-validation-for="data_termino" class="text-danger"></span>
+                    <input asp-for="data_termino" class="form-control"  id="input_data_termino" />
+                    <span asp-validation-for="data_termino" class="text-danger" id="label_data_termino"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="periodo_letivo" class="control-label"></label>
@@ -35,9 +35,13 @@
                     <span asp-validation-for="periodo_letivo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="categoria" class="control-label"></label>
-                    <input asp-for="categoria" class="form-control" />
-                    <span asp-validation-for="categoria" class="text-danger"></span>
+                    <label class="control-label">Categoria</label>
+                    <select id="categoria" asp-for="categoria" class="form-control">
+                        <option value="@Categoria.Agendado">Agendado</option>
+                        <option value="@Categoria.ENEM">Enem</option>
+                        <option value="@Categoria.CRM4U">CRM4U</option>
+                        <option value="@Categoria.Tradicional">Tradicional</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label asp-for="qnt_de_inscricoes" class="control-label"></label>
@@ -55,6 +59,7 @@
 
 
 @section scripts {
+    <script src="~/js/verificaData.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/navbar.js"></script>

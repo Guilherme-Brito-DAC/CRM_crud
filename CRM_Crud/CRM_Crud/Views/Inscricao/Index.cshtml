@@ -16,7 +16,7 @@
                     @Html.DisplayNameFor(model => model.nome)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.data)
+                    @Html.DisplayNameFor(model => model.data_de_inscricao)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.status)
@@ -32,7 +32,7 @@
                         @Html.DisplayFor(modelItem => item.nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.data)
+                        @Html.DisplayFor(modelItem => item.data_de_inscricao)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.status)
@@ -48,7 +48,7 @@
 </div>
 
 @section scripts {
-    <script src="~/js/site.js"></script>
+    <script src="~/js/inscricao.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/navbar.js"></script>

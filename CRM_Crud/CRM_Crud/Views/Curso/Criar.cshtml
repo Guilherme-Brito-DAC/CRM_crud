@@ -21,17 +21,17 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="data_inicio" class="control-label"></label>
-                    <input asp-for="data_inicio" class="form-control" />
+                    <input asp-for="data_inicio" class="form-control" id="input_data_inicio" />
                     <span asp-validation-for="data_inicio" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="data_termino" class="control-label"></label>
-                    <input asp-for="data_termino" class="form-control" />
-                    <span asp-validation-for="data_termino" class="text-danger"></span>
+                    <input asp-for="data_termino" class="form-control" id="input_data_termino" />
+                    <span asp-validation-for="data_termino" class="text-danger" id="label_data_termino"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="periodo_letivo" class="control-label"></label>
-                    <input asp-for="periodo_letivo" class="form-control" />
+                    <input asp-for="periodo_letivo" id="input_periodo_letivo" class="form-control" />
                     <span asp-validation-for="periodo_letivo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -58,6 +58,7 @@
 </div>
 
 @section scripts {
+    <script src="~/js/verificaData.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/navbar.js"></script>

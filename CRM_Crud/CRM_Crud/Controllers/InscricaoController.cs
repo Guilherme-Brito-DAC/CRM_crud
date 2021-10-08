@@ -1,6 +1,7 @@
 ﻿using CRM_Crud.Models;
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace CRM_Crud.Controllers
 {
@@ -27,6 +28,8 @@ namespace CRM_Crud.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Criar(Inscricao Inscricao)
         {
+            Inscricao.data_de_inscricao = DateTime.Now;
+            Inscricao.status = "Inscrito";
             InscricaoRepository.CriarInscricao(Inscricao);
             return View("Index", InscricaoRepository.ListarInscricoes());
         }

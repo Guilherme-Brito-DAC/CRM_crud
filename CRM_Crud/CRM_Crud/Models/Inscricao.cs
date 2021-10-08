@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CRM_Crud.Models
 {
@@ -13,8 +10,8 @@ namespace CRM_Crud.Models
         [MaxLength(250, ErrorMessage = "O nome tem que possuir menos que 250 caractéres")]
         [Display(Name = "Nome")]
         public string nome { get; set; }
-        [Display(Name = "Data")]
-        public DateTime data { get; set; }
+        [Display(Name = "Data de inscrição")]
+        public DateTime data_de_inscricao { get; set; }
         [Required]
         [Display(Name = "Curso")]
         public int curso_id { get; set; }
@@ -22,7 +19,7 @@ namespace CRM_Crud.Models
         [Display(Name = "Lead")]
         public int lead_id { get; set; }
         [Display(Name = "Status")]
-        public status status { get; set; }
+        public string status { get; set; }
     }
 
     public enum status
