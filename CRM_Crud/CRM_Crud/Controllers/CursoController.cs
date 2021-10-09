@@ -1,7 +1,7 @@
 ﻿using CRM_Crud.Models;
 using CRM_Crud.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace CRM_Crud.Controllers
@@ -34,8 +34,19 @@ namespace CRM_Crud.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Criar(Curso curso)
         {
-            cursoRepository.CriarCurso(curso);
-            return View("Index", ListarCursos());
+            try
+            {
+                cursoRepository.CriarCurso(curso);
+                TempData["Confirmacao"] = "Curso criado com sucesso!";
+
+                return View("Index", ListarCursos());
+            }
+            catch (Exception e)
+            {
+                TempData["Erro"] = "Aconteceu um erro! ";
+
+                return View("Index", ListarCursos());
+            }
         }
 
         public ActionResult Editar(int id)
@@ -47,14 +58,36 @@ namespace CRM_Crud.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Editar(Curso curso)
         {
-            cursoRepository.EditarCurso(curso);
-            return View("Index", ListarCursos());
+            try
+            {
+                cursoRepository.EditarCurso(curso);
+                TempData["Confirmacao"] = "Curso editado com sucesso!";
+
+                return View("Index", ListarCursos());
+            }
+            catch (Exception e)
+            {
+                TempData["Erro"] = "Aconteceu um erro! ";
+
+                return View("Index", ListarCursos());
+            }
         }
 
         public ActionResult Deletar(int id)
         {
-            cursoRepository.DeletarCurso(id);
-            return View("Index", ListarCursos());
+            try
+            {
+                cursoRepository.DeletarCurso(id);
+                TempData["Confirmacao"] = "Curso deletado com sucesso!";
+
+                return View("Index", ListarCursos());
+            }
+            catch (Exception e)
+            {
+                TempData["Erro"] = "Aconteceu um erro! ";
+
+                return View("Index", ListarCursos());
+            }
         }
     }
 }

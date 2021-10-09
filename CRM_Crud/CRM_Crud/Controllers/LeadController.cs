@@ -1,7 +1,7 @@
 ﻿using CRM_Crud.Models;
 using CRM_Crud.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace CRM_Crud.Controllers
@@ -34,8 +34,19 @@ namespace CRM_Crud.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Criar(Lead Lead)
         {
-            LeadRepository.CriarLead(Lead);
-            return View("Index", ListarLeads());
+            try
+            {
+                LeadRepository.CriarLead(Lead);
+                TempData["Confirmacao"] = "Lead criado com sucesso!";
+
+                return View("Index", ListarLeads());
+            }
+            catch (Exception e)
+            {
+                TempData["Erro"] = "Aconteceu um erro! ";
+
+                return View("Index", ListarLeads());
+            }
         }
 
         public ActionResult Editar(int id)
@@ -47,14 +58,36 @@ namespace CRM_Crud.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Editar(Lead Lead)
         {
-            LeadRepository.EditarLead(Lead);
-            return View("Index", ListarLeads());
+            try
+            {
+                LeadRepository.EditarLead(Lead);
+                TempData["Confirmacao"] = "Lead editado com sucesso!";
+
+                return View("Index", ListarLeads());
+            }
+            catch (Exception e)
+            {
+                TempData["Erro"] = "Aconteceu um erro! ";
+
+                return View("Index", ListarLeads());
+            }
         }
 
         public ActionResult Deletar(int id)
         {
-            LeadRepository.DeletarLead(id);
-            return View("Index", ListarLeads());
+            try
+            {
+                LeadRepository.DeletarLead(id);
+                TempData["Confirmacao"] = "Lead excluido com sucesso!";
+
+                return View("Index", ListarLeads());
+            }
+            catch (Exception e)
+            {
+                TempData["Erro"] = "Aconteceu um erro! ";
+
+                return View("Index", ListarLeads());
+            }
         }
     }
 }

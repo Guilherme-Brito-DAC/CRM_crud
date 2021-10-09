@@ -28,10 +28,22 @@ namespace CRM_Crud.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Criar(Inscricao Inscricao)
         {
-            Inscricao.data_de_inscricao = DateTime.Now;
-            Inscricao.status = "Inscrito";
-            InscricaoRepository.CriarInscricao(Inscricao);
-            return View("Index", InscricaoRepository.ListarInscricoes());
+            try
+            {
+                Inscricao.data_de_inscricao = DateTime.Now;
+                Inscricao.status = "Inscrito";
+                InscricaoRepository.CriarInscricao(Inscricao);
+
+                TempData["Confirmacao"] = "Inscrição criada com sucesso!";
+
+                return View("Index", InscricaoRepository.ListarInscricoes());
+            }
+            catch (Exception e)
+            {
+                TempData["Erro"] = "Aconteceu um erro! ";
+
+                return View("Index", InscricaoRepository.ListarInscricoes());
+            }
         }
 
         public ActionResult Editar(int id)
@@ -43,14 +55,37 @@ namespace CRM_Crud.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Editar(Inscricao Inscricao)
         {
-            InscricaoRepository.EditarInscricao(Inscricao);
-            return View("Index", InscricaoRepository.ListarInscricoes());
+            try
+            {
+                InscricaoRepository.EditarInscricao(Inscricao);
+
+                TempData["Confirmacao"] = "Inscrição editada com sucesso!";
+
+                return View("Index", InscricaoRepository.ListarInscricoes());
+            }
+            catch (Exception e)
+            {
+                TempData["Erro"] = "Aconteceu um erro! ";
+
+                return View("Index", InscricaoRepository.ListarInscricoes());
+            }
         }
 
         public ActionResult Deletar(int id)
         {
-            InscricaoRepository.DeletarInscricao(id);
-            return View("Index", InscricaoRepository.ListarInscricoes());
+            try
+            {
+                InscricaoRepository.DeletarInscricao(id);
+                TempData["Confirmacao"] = "Inscrição excluida com sucesso!";
+
+                return View("Index", InscricaoRepository.ListarInscricoes());
+            }
+            catch (Exception e)
+            {
+                TempData["Erro"] = "Aconteceu um erro! ";
+
+                return View("Index", InscricaoRepository.ListarInscricoes());
+            }
         }
     }
 }

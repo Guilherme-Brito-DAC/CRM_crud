@@ -1,5 +1,7 @@
 ﻿using CRM_Crud.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace CRM_Crud.Repositories
@@ -32,9 +34,10 @@ namespace CRM_Crud.Repositories
         {
             return dbSet.Where(c => c.id == id).SingleOrDefault();
         }
-       
+
         public void DeletarCurso(int id)
         {
+
             dbSet.Remove(ListarUmCurso(id));
             context.SaveChanges();
         }

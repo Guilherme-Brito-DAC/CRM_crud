@@ -38,5 +38,33 @@ namespace CRM_Crud.Repositories
             dbSet.Remove(ListarUmaInscricao(id));
             context.SaveChanges();
         }
+
+        public bool VerificaSePossuiCurso(int id)
+        {
+            var curso = dbSet.Where(c => c.curso_id == id).SingleOrDefault();
+
+            if (curso != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool VerificaSePossuiLead(int id)
+        {
+            var lead = dbSet.Where(c => c.lead_id == id).SingleOrDefault();
+            
+            if (lead != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
