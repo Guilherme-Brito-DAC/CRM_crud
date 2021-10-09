@@ -26,12 +26,12 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="telefone" class="control-label"></label>
-                    <input asp-for="telefone" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" class="form-control" />
+                    <input asp-for="telefone" id="input_telefone" class="form-control" />
                     <span asp-validation-for="telefone" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="cpf" class="control-label"></label>
-                    <input asp-for="cpf" class="form-control" />
+                    <input asp-for="cpf" id="input_cpf" class="form-control" />
                     <span asp-validation-for="cpf" class="text-danger"></span>
                 </div>
                 <input type="hidden" asp-for="id" />
@@ -47,4 +47,11 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/navbar.js"></script>
+    <script src="~/lib/jquery-mask/dist/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#input_telefone").mask("(00) 00000-0000")
+            $("#input_cpf").mask("000.000.000-00")
+        })
+    </script>
 }
