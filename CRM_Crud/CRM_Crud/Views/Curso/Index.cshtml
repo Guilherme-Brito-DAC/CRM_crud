@@ -73,7 +73,7 @@
                     </td>
                     <td style="display:flex;gap:30px;">
                         <a asp-action="Editar" asp-route-id="@item.id"><img src="https://img.icons8.com/ios-glyphs/30/edb10c/edit--v1.png" /></a>
-                        <a asp-action="Deletar" asp-route-id="@item.id"><img src="https://img.icons8.com/color/30/000000/delete-sign--v1.png" /></a>
+                        <a style="cursor:pointer" onclick="Confirmar(@item.id)"><img src="https://img.icons8.com/color/30/000000/delete-sign--v1.png" /></a>
                     </td>
                 </tr>
             }
@@ -82,6 +82,19 @@
 </div>
 
 @section scripts {
+    <script>
+        function Confirmar(id) {
+
+            alertify.confirm("Tem certeza que deseja excluir esse curso?",
+                function () {
+                    window.location.href = `/curso/deletar/${id}`;
+                },
+                function () {
+
+                }
+            ).set({ title: "Deletar" }).set({ labels: { ok: 'Tenho', cancel: 'Cancelar' } });
+        }
+    </script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/navbar.js"></script>
