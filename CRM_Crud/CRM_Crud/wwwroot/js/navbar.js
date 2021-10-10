@@ -1,5 +1,5 @@
-﻿document.querySelector(".hamburger").onclick = function () {
-    document.querySelector(".wrapper").classList.toggle("colapse");
+﻿document.querySelector(".botao_menu").onclick = function () {
+    document.querySelector(".menu_lateral").classList.toggle("colapse");
 };
 
 var url_atual = window.location.href;

@@ -4,11 +4,23 @@
     ViewData["Title"] = "Editar inscrição";
 }
 
-<<div class="item">
+<div class="item">
     <div class="tablehead">
         <h1 class="titulomid">Inscrição</h1>
         <a asp-action="Index">Voltar</a>
     </div>
+    <hr />
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/progress.js"></script>
+
+    <ol id="barra_de_progresso" class="mid">
+        <li id="1">Inscrito</li>
+        <li id="2">Classificado</li>
+        <li id="3">Convocado</li>
+        <li id="4">Matriculado</li>
+    </ol>
+
     <hr />
     <div class="row">
         <div class="col">
@@ -41,11 +53,49 @@
 </div>
 
 @section scripts {
-    <script src="~/js/inscricao.js"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script>
+
+        status("@Model.status")
+
+        function status(status)
+        {
+            var value = 1
+
+            switch (status) {
+
+                case "Inscrito":
+                    value = 1
+                    break;
+
+                case "Classificado":
+                    value = 2
+                    break;
+
+                case "Convocado":
+                    value = 3
+                    break;
+
+                case "Matriculado":
+                    value = 4
+                    break;
+
+                default:
+                    value = 1
+                    break;
+            }
+
+            $("#barra_de_progresso").stepProgressBar(value)
+        }
+
+        document.getElementById("status").onchange = function (e) {
+            status(e.target.value)
+        }
+
+    </script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/navbar.js"></script>
+    <script src="~/js/progress.js"></script>
 }

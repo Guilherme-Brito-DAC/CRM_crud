@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="~/css/index.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/sortable/sortable-theme-bootstrap.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
     <title>CRM</title>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="menu_lateral">
         <div class="top_navbar">
-            <div class="hamburger" id="navbarbtn">
-                <div class="one"></div>
-                <div class="two"></div>
-                <div class="three"></div>
+            <div class="botao_menu" id="navbarbtn">
+                <div class="um"></div>
+                <div class="dois"></div>
+                <div class="tres"></div>
             </div>
             <div class="top_menu">
                 <div class="logo">
@@ -48,7 +49,7 @@
 
             </ul>
         </div>
-        <main role="main" class="main_container">
+        <main role="main" class="main">
             @RenderBody()
         </main>
     </div>

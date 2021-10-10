@@ -16,7 +16,7 @@ body {
     display: block;
 }
 
-.wrapper .top_navbar {
+.menu_lateral .top_navbar {
     width: 100%;
     height: 60px;
     display: flex;
@@ -24,7 +24,7 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-    .wrapper .top_navbar .hamburger {
+    .menu_lateral .top_navbar .botao_menu {
         width: 70px;
         height: 100%;
         background: #292929;
@@ -32,14 +32,14 @@ body {
         cursor: pointer;
     }
 
-        .wrapper .top_navbar .hamburger div {
+        .menu_lateral .top_navbar .botao_menu div {
             width: 35px;
             height: 4px;
             background: #fff;
             margin: 5px 0;
         }
 
-    .wrapper .top_navbar .top_menu {
+    .menu_lateral .top_navbar .top_menu {
         width: 100%;
         height: 100%;
         background: #fff;
@@ -50,7 +50,7 @@ body {
         box-shadow: 0 1px 1px rgba(0,0,0,0.1);
     }
 
-        .wrapper .top_navbar .top_menu .logo a {
+        .menu_lateral .top_navbar .top_menu .logo a {
             color: #292929;
             font-size: 20px;
             font-weight: 700;
@@ -58,7 +58,7 @@ body {
             font-family: 'Montserrat', sans-serif;
         }
 
-.wrapper .sidebar {
+.menu_lateral .sidebar {
     position: fixed;
     background: #292929;
     width: 200px;
@@ -66,7 +66,7 @@ body {
     transition: all 0.3s ease;
 }
 
-    .wrapper .sidebar ul li a {
+    .menu_lateral .sidebar ul li a {
         display: block;
         padding: 20px;
         color: #fff;
@@ -75,7 +75,7 @@ body {
         white-space: nowrap;
     }
 
-        .wrapper .sidebar ul li a:before {
+        .menu_lateral .sidebar ul li a:before {
             content: "";
             position: absolute;
             top: 0;
@@ -86,25 +86,25 @@ body {
             display: none;
         }
 
-        .wrapper .sidebar ul li a span.icon {
+        .menu_lateral .sidebar ul li a span.icon {
             margin-right: 10px;
             display: inline-block;
         }
 
-        .wrapper .sidebar ul li a span.title {
+        .menu_lateral .sidebar ul li a span.title {
             display: inline-block;
         }
 
-        .wrapper .sidebar ul li a:hover, .wrapper .sidebar ul li a.active {
+        .menu_lateral .sidebar ul li a:hover, .menu_lateral .sidebar ul li a.active {
             background: #444444;
             color: #fff;
         }
 
-            .wrapper .sidebar ul li a:hover:before, .wrapper .sidebar ul li a.active:before {
+            .menu_lateral .sidebar ul li a:hover:before, .menu_lateral .sidebar ul li a.active:before {
                 display: block;
             }
 
-.wrapper .main_container {
+.menu_lateral .main {
     width: calc(100% - 200px);
     margin-top: 20px;
     margin-left: 200px;
@@ -112,7 +112,7 @@ body {
     transition: all 0.3s ease;
 }
 
-    .wrapper .main_container .item {
+    .menu_lateral .main .item {
         background: #fff;
         margin-bottom: 10px;
         padding: 3rem;
@@ -120,23 +120,23 @@ body {
         line-height: 22px;
     }
 
-.wrapper.colapse .sidebar {
+.menu_lateral.colapse .sidebar {
     width: 70px;
 }
 
-    .wrapper.colapse .sidebar ul li a {
-        text-align: center;
-    }
+.menu_lateral.colapse .sidebar ul li a {
+    text-align: center;
+}
 
-        .wrapper.colapse .sidebar ul li a span.icon {
-            margin: 0;
-        }
+.menu_lateral.colapse .sidebar ul li a span.icon {
+    margin: 0;
+}
 
-        .wrapper.colapse .sidebar ul li a span.title {
-            display: none;
-        }
+.menu_lateral.colapse .sidebar ul li a span.title {
+    display: none;
+}
 
-.wrapper.colapse .main_container {
+.menu_lateral.colapse .main {
     width: calc(100% - 70px);
     margin-left: 70px;
     display: block;
@@ -182,10 +182,10 @@ a {
     color: #fff;
 }
 
-    .criar:hover {
-        text-decoration: none;
-        color: #fff;
-    }
+.criar:hover {
+    text-decoration: none;
+    color: #fff;
+}
 
 form {
     width: 100%;
@@ -207,31 +207,103 @@ form {
     height:3rem;
 }
 
-    .pesquisa select {
-        height: 100%;
-        padding: 0.5rem;
-        outline: 0;
-        border: 0;
-        border-right: 1px solid #e0e0e0;
-        background: #e7e7e7;
-    }
+.pesquisa select {
+    height: 100%;
+    padding: 0.5rem;
+    outline: 0;
+    border: 0;
+    border-right: 1px solid #e0e0e0;
+    background: #e7e7e7;
+}
 
-    .pesquisa input {
-        border: 0;
-        outline: 0;
-        height: 100%;
-        padding: 0.5rem;
-        width: 17rem;
-        background: #e7e7e7;
-    }
+.pesquisa input {
+    border: 0;
+    outline: 0;
+    height: 100%;
+    padding: 0.5rem;
+    width: 17rem;
+    background: #e7e7e7;
+}
 
-    .pesquisa button {
-        border: 0;
-        height: 100%;
-        padding-left: 1.3rem;
-        padding-right: 1.3rem;
-        background: #1e81b0;
-    }
+.pesquisa button {
+    border: 0;
+    height: 100%;
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+    background: #1e81b0;
+}
+
+ol.step-progress-bar {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+ol.step-progress-bar li {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    flex: 1 1;
+    position: relative;
+    margin: 0 5px 0;
+}
+
+ol.step-progress-bar li span.content-bullet {
+    border-radius: 100%;
+    display: block;
+    text-align: center;
+    transform: translateX(-50%);
+    margin-left: 50%;
+}
+        
+ol.step-progress-bar li span.content-stick {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 8px;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+}
+
+ol.step-progress-bar li.step-past *,
+ol.step-progress-bar li.step-present .content-stick {
+    color: #2dcd73;
+    background: #2dcd73;
+}
+
+ol.step-progress-bar li.step-present * {
+    color: #4c92d9;
+    background: #4c92d9;
+}
+
+ol.step-progress-bar li .content-bullet {
+    color: white;
+}
+
+ol.step-progress-bar li.step-future * {
+    color: #869398;
+    background: #dde2e3;
+}
+
+ol.step-progress-bar li .content-wrapper {
+    background: transparent;
+}
+
+ol.step-progress-bar.mid li .content-bullet {
+    width: 37px;
+    line-height: 37px;
+}
+
+ol.step-progress-bar.mid li {
+    font-size: 100%;
+}
+
+ol.step-progress-bar.mid li .content-stick {
+    top: 18.5px; 
+    height: 6px;
+}
 
 @media only screen and (max-width: 600px) {
     .col {
