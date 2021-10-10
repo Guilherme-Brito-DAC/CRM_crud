@@ -22,6 +22,12 @@ namespace CRM_Crud.Controllers
         }
 
         [HttpGet]
+        public IList<Lead> ListarLeads()
+        {
+            return LeadRepository.ListarLeads();
+        }
+
+        [HttpGet]
         public ActionResult Pesquisar(string pesquisa, string campo)
         {
             if (!string.IsNullOrEmpty(pesquisa))

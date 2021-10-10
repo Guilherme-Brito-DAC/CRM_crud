@@ -1,6 +1,7 @@
 ﻿using CRM_Crud.Models;
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CRM_Crud.Controllers
@@ -18,6 +19,12 @@ namespace CRM_Crud.Controllers
         public ActionResult Index()
         {
             return View(cursoRepository.ListarCursos());
+        }
+
+        [HttpGet]
+        public IList<Curso> ListarCursos()
+        {
+            return cursoRepository.ListarCursos();
         }
 
         [HttpGet]
