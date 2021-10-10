@@ -182,6 +182,15 @@ a {
     color: #fff;
 }
 
+.cpf {
+    filter: blur(0.17rem);
+    transition:0.25s;
+}
+
+.cpf:hover {
+    filter: blur(0);
+}
+
 .criar:hover {
     text-decoration: none;
     color: #fff;
