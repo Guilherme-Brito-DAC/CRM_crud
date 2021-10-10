@@ -12,10 +12,10 @@ namespace CRM_Crud.Models
         public string nome { get; set; }
         [Display(Name = "Data de inscrição")]
         public DateTime data_de_inscricao { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O curso é obrigatório")]
         [Display(Name = "Curso")]
         public int curso_id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "O lead é obrigatório")]
         [Display(Name = "Lead")]
         public int lead_id { get; set; }
         [Display(Name = "Status")]

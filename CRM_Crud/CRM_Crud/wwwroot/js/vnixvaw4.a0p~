@@ -1,0 +1,64 @@
+﻿async function getDados(url = '') {
+    const response = await fetch(url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+    });
+    return response.json();
+}
+
+var cursoSelect = document.getElementById("cursoSelect");
+var cursos = []
+var leadSelect = document.getElementById("leadSelect");
+var leads = []
+
+getDados('https://localhost:44303/Lead/ListarLeads')
+    .then(dados => {
+        leads = dados
+        dados.forEach(lead => {
+            var opt = document.createElement('option');
+            opt.value = lead.id;
+            opt.innerHTML = lead.nome;
+            leadSelect.appendChild(opt);
+        });
+    });
+
+getDados('https://localhost:44303/Curso/ListarCursos')
+    .then(dados => {
+        cursos = dados
+        dados.forEach(curso => {
+            var opt = document.createElement('option');
+            opt.value = curso.id;
+            opt.innerHTML = curso.titulo;
+            cursoSelect.appendChild(opt);
+        });
+    });
+
+leadSelect.onchange = function (e) {
+
+    var lead_selecionado = leads.find(e => e.id == e.target.value);
+
+    document.getElementById("lbl_nome").innerHTML = cursos[0].nome
+    document.getElementById("lbl_email").innerHTML = cursos[0].email
+    document.getElementById("lbl_telefone").innerHTML = cursos[0].telefone
+    document.getElementById("lbl_cpf").innerHTML = cursos[0].cpf
+}
+
+cursoSelect.onchange = function (e) {
+    console.log(e.target.value)
+
+    console.log(cursos[0])
+
+    document.getElementById("lbl_titulo").innerHTML = cursos[0].titulo
+    document.getElementById("lbl_inicio").innerHTML = cursos[0].data_inicio
+    document.getElementById("lbl_termino").innerHTML = cursos[0].data_termino
+    document.getElementById("lbl_inscricoes").innerHTML = cursos[0].qnt_de_inscricoes
+    document.getElementById("lbl_categoria").innerHTML = cursos[0].categoria
+    document.getElementById("lbl_periodo_letivo").innerHTML = cursos[0].periodo_letivo
+}

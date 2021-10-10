@@ -18,20 +18,43 @@
                 <input asp-for="nome" class="form-control" />
                 <span asp-validation-for="nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="lead_id" class="control-label"></label>
-                <select asp-for="lead_id" class="form-control" id="leadSelect">
-                </select>
-                <span asp-validation-for="lead_id" class="text-danger"></span>
+
+            <div>
+                <div class="form-group">
+                    <label asp-for="lead_id" class="control-label"></label>
+                    <select asp-for="lead_id" class="form-control" id="leadSelect">
+                        <option></option>
+                    </select>
+                    <span asp-validation-for="lead_id" class="text-danger"></span>
+                </div>
+                <div class="informations">
+                    <div><p>Nome : </p><p id="lbl_nome"></p></div>
+                    <div><p>Email : </p><p id="lbl_email"></p></div>
+                    <div><p>Telefone : </p><p id="lbl_telefone"></p></div>
+                    <div><p>CPF : </p><p id="lbl_cpf"></p></div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="curso_id" class="control-label"></label>
-                <select asp-for="curso_id" class="form-control" id="cursoSelect">
-                </select>
-                <span asp-validation-for="curso_id" class="text-danger"></span>
+            <br />
+            <div>
+                <div class="form-group">
+                    <label asp-for="curso_id" class="control-label"></label>
+                    <select asp-for="curso_id" class="form-control" id="cursoSelect">
+                        <option></option>
+                    </select>
+                    <span asp-validation-for="curso_id" class="text-danger"></span>
+                </div>
+                <div class="informations">
+                    <div><p>Título : </p><p id="lbl_titulo"></p></div>
+                    <div><p>Inicio : </p><p id="lbl_inicio"></p></div>
+                    <div><p>Termino : </p><p id="lbl_termino"></p></div>
+                    <div><p>Inscrições : </p><p id="lbl_inscricoes"></p></div>
+                    <div><p>Categoria : </p><p id="lbl_categoria"></p></div>
+                    <div><p>Período Letivo : </p><p id="lbl_periodo_letivo"></p></div>
+                </div>
             </div>
+            <br />
             <div class="form-group">
-                <input type="reset" value="Limpar" class="btn btn-secondary" />
+                <input type="reset" id="btn_reset" value="Limpar" class="btn btn-secondary" />
                 <input type="submit" value="Cadastrar" class="btn btn-success" />
             </div>
         </form>
@@ -43,5 +66,8 @@
     <script src="~/js/inscricao.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/navbar.js"></script>
 }

@@ -1,0 +1,58 @@
+﻿async function getDados(url = '') {
+    const response = await fetch(url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+    });
+    return response.json();
+}
+
+var cursoSelect = document.getElementById("cursoSelect");
+var cursos = []
+var leadSelect = document.getElementById("leadSelect");
+var leads = []
+
+getDados('https://localhost:44303/Lead/ListarLeads')
+    .then(dados => {
+        leads = dados
+        dados.forEach(lead => {
+            var opt = document.createElement('option');
+            opt.value = lead.id;
+            opt.innerHTML = lead.nome;
+            leadSelect.appendChild(opt);
+        });
+    });
+
+getDados('https://localhost:44303/Curso/ListarCursos')
+    .then(dados => {
+        cursos = dados
+        dados.forEach(curso => {
+            var opt = document.createElement('option');
+            opt.value = curso.id;
+            opt.innerHTML = curso.titulo;
+            cursoSelect.appendChild(opt);
+        });
+    });
+
+leadSelect.onchange = function (e) {
+    console.log(e.target.value)
+    console.log(leads[0])
+
+    document.getElementById("lbl_titulo").innerHTML = 
+}
+
+cursoSelect.onchange = function (e) {
+    console.log(e.target.value)
+    console.log(cursos[0])
+
+    document.getElementById("lbl_nome").innerHTML = cursos[0].nome
+    document.getElementById("lbl_nome").innerHTML = cursos[0]
+    document.getElementById("lbl_nome").innerHTML = cursos[0]
+    document.getElementById("lbl_nome").innerHTML = cursos[0]
+}

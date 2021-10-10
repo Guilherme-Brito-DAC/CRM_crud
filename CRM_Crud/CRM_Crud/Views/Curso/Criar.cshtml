@@ -49,7 +49,7 @@
                     <span asp-validation-for="qnt_de_inscricoes" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="reset" value="Limpar" class="btn btn-secondary" />
+                    <input type="reset" id="btn_reset" value="Limpar" class="btn btn-secondary" />
                     <input type="submit" id="btn_submit" value="Cadastrar" class="btn btn-success" />
                 </div>
             </form>
@@ -62,9 +62,16 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery-mask/dist/jquery.mask.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script>
+        btn_reset.onclick = function () {
+            document.getElementById("label_data_termino").innerHTML = ""
+        }
+
         $(document).ready(function () {
-            $("#input_periodo_letivo").mask("0000/0")
+            $("#input_periodo_letivo").mask("2021/0")
         })
     </script>
     <script src="~/js/navbar.js"></script>
