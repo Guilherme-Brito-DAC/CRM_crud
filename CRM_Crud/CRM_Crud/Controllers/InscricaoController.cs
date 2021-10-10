@@ -8,10 +8,12 @@ namespace CRM_Crud.Controllers
     public class InscricaoController : Controller
     {
         public IInscricaoRepository InscricaoRepository;
+        public ICursoRepository CursoRepository;
 
-        public InscricaoController(IInscricaoRepository _InscricaoRepository)
+        public InscricaoController(IInscricaoRepository _InscricaoRepository, ICursoRepository _CursoRepository)
         {
             InscricaoRepository = _InscricaoRepository;
+            CursoRepository = _CursoRepository;
         }
 
         public ActionResult Index()
@@ -30,13 +32,22 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                Inscricao.data_de_inscricao = DateTime.Now;
-                Inscricao.status = "Inscrito";
-                InscricaoRepository.CriarInscricao(Inscricao);
+                if (CursoPossuiVaga(Inscricao.curso_id))
+                {
+                    Inscricao.data_de_inscricao = DateTime.Now;
+                    Inscricao.status = "Inscrito";
+                    InscricaoRepository.CriarInscricao(Inscricao);
 
-                TempData["Confirmacao"] = "Inscrição criada com sucesso!";
+                    TempData["Confirmacao"] = "Inscrição criada com sucesso!";
 
-                return View("Index", InscricaoRepository.ListarInscricoes());
+                    return View("Index", InscricaoRepository.ListarInscricoes());
+                }
+                else
+                {
+                    TempData["Erro"] = "O curso que está tentando se inscrever não possui espaço";
+
+                    return View("Index", InscricaoRepository.ListarInscricoes());
+                }
             }
             catch (Exception e)
             {
@@ -85,6 +96,23 @@ namespace CRM_Crud.Controllers
                 TempData["Erro"] = "Aconteceu um erro! ";
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
+            }
+        }
+
+        public bool CursoPossuiVaga(int id)
+        {
+            var curso = CursoRepository.ListarUmCurso(id);
+            var max_de_inscricoes = curso.qnt_de_inscricoes;
+
+            var inscricoes = InscricaoRepository.ListarInscricoesEmUmCurso(id).Count;
+
+            if (max_de_inscricoes > inscricoes)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

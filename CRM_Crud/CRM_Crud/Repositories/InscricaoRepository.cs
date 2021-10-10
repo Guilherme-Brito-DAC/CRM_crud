@@ -28,6 +28,11 @@ namespace CRM_Crud.Repositories
             return dbSet.ToList();
         }
 
+        public IList<Inscricao> ListarInscricoesEmUmCurso(int id)
+        {
+            return dbSet.Where(c => c.curso_id == id).ToList();
+        }
+
         public Inscricao ListarUmaInscricao(int id)
         {
             return dbSet.Where(c => c.id == id).SingleOrDefault();
@@ -37,34 +42,6 @@ namespace CRM_Crud.Repositories
         {
             dbSet.Remove(ListarUmaInscricao(id));
             context.SaveChanges();
-        }
-
-        public bool VerificaSePossuiCurso(int id)
-        {
-            var curso = dbSet.Where(c => c.curso_id == id).SingleOrDefault();
-
-            if (curso != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool VerificaSePossuiLead(int id)
-        {
-            var lead = dbSet.Where(c => c.lead_id == id).SingleOrDefault();
-            
-            if (lead != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }
