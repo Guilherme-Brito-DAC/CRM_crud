@@ -1,8 +1,7 @@
 ﻿using CRM_Crud.Models;
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CRM_Crud.Controllers
 {
@@ -15,16 +14,26 @@ namespace CRM_Crud.Controllers
             cursoRepository = _cursoRepository;
         }
 
-        public IList<Curso> ListarCursos()
-        {
-            return cursoRepository.ListarCursos();
-        }
-
+        [HttpGet]
         public ActionResult Index()
         {
-            return View(ListarCursos());
+            return View(cursoRepository.ListarCursos());
         }
 
+        [HttpGet]
+        public ActionResult Pesquisar(string pesquisa, string campo)
+        {
+            if (!string.IsNullOrEmpty(pesquisa))
+            {
+                return View("Index", cursoRepository.Pesquisar(campo, pesquisa));
+            }
+            else
+            {
+                return View("Index", cursoRepository.ListarCursos());
+            }
+        }
+
+        [HttpGet]
         public ActionResult Criar()
         {
             return View();
@@ -39,16 +48,17 @@ namespace CRM_Crud.Controllers
                 cursoRepository.CriarCurso(curso);
                 TempData["Confirmacao"] = "Curso criado com sucesso!";
 
-                return View("Index", ListarCursos());
+                return View("Index", cursoRepository.ListarCursos());
             }
-            catch (Exception e)
+            catch 
             {
                 TempData["Erro"] = "Aconteceu um erro! ";
 
-                return View("Index", ListarCursos());
+                return View("Index", cursoRepository.ListarCursos());
             }
         }
 
+        [HttpGet]
         public ActionResult Editar(int id)
         {
             return View(cursoRepository.ListarUmCurso(id));
@@ -63,13 +73,13 @@ namespace CRM_Crud.Controllers
                 cursoRepository.EditarCurso(curso);
                 TempData["Confirmacao"] = "Curso editado com sucesso!";
 
-                return View("Index", ListarCursos());
+                return View("Index", cursoRepository.ListarCursos());
             }
-            catch (Exception e)
+            catch 
             {
                 TempData["Erro"] = "Aconteceu um erro! ";
 
-                return View("Index", ListarCursos());
+                return View("Index", cursoRepository.ListarCursos());
             }
         }
 
@@ -80,13 +90,13 @@ namespace CRM_Crud.Controllers
                 cursoRepository.DeletarCurso(id);
                 TempData["Confirmacao"] = "Curso deletado com sucesso!";
 
-                return View("Index", ListarCursos());
+                return View("Index", cursoRepository.ListarCursos());
             }
-            catch (Exception e)
+            catch 
             {
                 TempData["Erro"] = "Aconteceu um erro! ";
 
-                return View("Index", ListarCursos());
+                return View("Index", cursoRepository.ListarCursos());
             }
         }
     }

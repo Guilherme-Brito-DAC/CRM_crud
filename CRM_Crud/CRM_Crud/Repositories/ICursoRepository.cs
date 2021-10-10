@@ -7,6 +7,7 @@ namespace CRM_Crud.Repositories
     {
         void CriarCurso(Curso curso);
         IList<Curso> ListarCursos();
+        IList<Curso> Pesquisar(string campo, string pesquisa);
         Curso ListarUmCurso(int id);
         void EditarCurso(Curso curso);
         void DeletarCurso(int id);

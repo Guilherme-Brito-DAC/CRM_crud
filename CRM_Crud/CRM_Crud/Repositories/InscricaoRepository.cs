@@ -43,5 +43,27 @@ namespace CRM_Crud.Repositories
             dbSet.Remove(ListarUmaInscricao(id));
             context.SaveChanges();
         }
+
+        public IList<Inscricao> Pesquisar(string campo, string pesquisa)
+        {
+            IList<Inscricao> resultado = new List<Inscricao>();
+
+            switch (campo)
+            {
+                case "nome":
+                    resultado = dbSet.Where(c => c.nome.Contains(pesquisa)).ToList();
+                    break;
+
+                case "status":
+                    resultado = dbSet.Where(c => c.status.Contains(pesquisa)).ToList();
+                    break;
+
+                default:
+                    resultado = ListarInscricoes();
+                    break;
+            }
+
+            return resultado;
+        }
     }
 }

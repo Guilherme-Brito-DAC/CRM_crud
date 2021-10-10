@@ -25,6 +25,14 @@
         <h1 class="titulomid">Inscrições</h1>
         <a asp-action="Criar" class="criar">Criar Novo</a>
     </div>
+    <form asp-action="Pesquisar" class="pesquisa" method="get">
+        <select name="campo">
+            <option value="nome">Nome</option>
+            <option value="status">Status</option>
+        </select>
+        <input type="text" name="pesquisa" placeholder="Pesquise aqui" />
+        <button type="submit"><img src="https://img.icons8.com/ios-glyphs/25/ffffff/search.png" /></button>
+    </form>
     <script src="~/lib/sortable/sortable.min.js"></script>
     <table class="sortable-theme-bootstrap" data-sortable>
         <thead>

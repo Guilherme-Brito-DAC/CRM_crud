@@ -4,7 +4,6 @@
     ViewData["Title"] = "Curso";
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.js" integrity="sha512-eOUPKZXJTfgptSYQqVilRmxUNYm0XVHwcRHD4mdtCLWf/fC9XWe98IT8H1xzBkLL4Mo9GL0xWMSJtgS5te9rQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
 
     if (TempData["Confirmacao"] != null)
     {
@@ -26,6 +25,15 @@
         <h1 class="titulomid">Cursos</h1>
         <a asp-action="Criar" class="criar">Criar Novo</a>
     </div>
+    <form asp-action="Pesquisar" class="pesquisa" method="get">
+        <select name="campo">
+            <option value="titulo">Titulo</option>
+            <option value="periodo_letivo">Periodo letivo</option>
+            <option value="categoria">Categoria</option>
+        </select>
+        <input type="text" name="pesquisa" placeholder="Pesquise aqui" />
+        <button type="submit"><img src="https://img.icons8.com/ios-glyphs/25/ffffff/search.png" /></button>
+    </form>
     <script src="~/lib/sortable/sortable.min.js"></script>
     <table class="sortable-theme-bootstrap" data-sortable>
         <thead>

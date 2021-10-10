@@ -38,5 +38,35 @@ namespace CRM_Crud.Repositories
             dbSet.Remove(ListarUmLead(id));
             context.SaveChanges();
         }
+
+        public IList<Lead> Pesquisar(string campo,string pesquisa)
+        {
+            IList<Lead> resultado = new List<Lead>();
+
+            switch (campo)
+            {
+                case "nome":
+                    resultado = dbSet.Where(c => c.nome.Contains(pesquisa)).ToList();
+                    break;
+
+                case "email":
+                    resultado = dbSet.Where(c => c.email.Contains(pesquisa)).ToList();
+                    break;
+
+                case "telefone":
+                    resultado = dbSet.Where(c => c.telefone.Contains(pesquisa)).ToList();
+                    break;
+
+                case "cpf":
+                    resultado = dbSet.Where(c => c.cpf.Contains(pesquisa)).ToList();
+                    break;
+
+                default:
+                    resultado = ListarLeads();
+                    break;
+            }
+
+            return resultado;
+        }
     }
 }

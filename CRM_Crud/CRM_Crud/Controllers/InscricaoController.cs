@@ -16,14 +16,29 @@ namespace CRM_Crud.Controllers
             CursoRepository = _CursoRepository;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View(InscricaoRepository.ListarInscricoes());
         }
 
+        [HttpGet]
         public ActionResult Criar()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Pesquisar(string pesquisa, string campo)
+        {
+            if (!string.IsNullOrEmpty(pesquisa))
+            {
+                return View("Index", InscricaoRepository.Pesquisar(campo, pesquisa));
+            }
+            else
+            {
+                return View("Index", InscricaoRepository.ListarInscricoes());
+            }
         }
 
         [HttpPost]
@@ -49,7 +64,7 @@ namespace CRM_Crud.Controllers
                     return View("Index", InscricaoRepository.ListarInscricoes());
                 }
             }
-            catch (Exception e)
+            catch 
             {
                 TempData["Erro"] = "Aconteceu um erro! ";
 
@@ -74,7 +89,7 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
             }
-            catch (Exception e)
+            catch 
             {
                 TempData["Erro"] = "Aconteceu um erro! ";
 
@@ -91,7 +106,7 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
             }
-            catch (Exception e)
+            catch 
             {
                 TempData["Erro"] = "Aconteceu um erro! ";
 

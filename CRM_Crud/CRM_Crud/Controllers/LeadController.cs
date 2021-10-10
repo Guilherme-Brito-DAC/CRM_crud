@@ -1,8 +1,8 @@
 ﻿using CRM_Crud.Models;
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CRM_Crud.Controllers
 {
@@ -15,16 +15,26 @@ namespace CRM_Crud.Controllers
             LeadRepository = _LeadRepository;
         }
 
-        public IList<Lead> ListarLeads()
-        {
-            return LeadRepository.ListarLeads();
-        }
-
+        [HttpGet]
         public ActionResult Index()
         {
-            return View(ListarLeads());
+            return View(LeadRepository.ListarLeads());
         }
 
+        [HttpGet]
+        public ActionResult Pesquisar(string pesquisa, string campo)
+        {
+            if (!string.IsNullOrEmpty(pesquisa))
+            {
+                return View("Index", LeadRepository.Pesquisar(campo, pesquisa));
+            }
+            else
+            {
+                return View("Index", LeadRepository.ListarLeads()); 
+            }
+        }
+
+        [HttpGet]
         public ActionResult Criar()
         {
             return View();
@@ -39,16 +49,17 @@ namespace CRM_Crud.Controllers
                 LeadRepository.CriarLead(Lead);
                 TempData["Confirmacao"] = "Lead criado com sucesso!";
 
-                return View("Index", ListarLeads());
+                return View("Index", LeadRepository.ListarLeads());
             }
-            catch (Exception e)
+            catch
             {
                 TempData["Erro"] = "Aconteceu um erro! ";
 
-                return View("Index", ListarLeads());
+                return View("Index", LeadRepository.ListarLeads());
             }
         }
 
+        [HttpGet]
         public ActionResult Editar(int id)
         {
             return View(LeadRepository.ListarUmLead(id));
@@ -63,13 +74,13 @@ namespace CRM_Crud.Controllers
                 LeadRepository.EditarLead(Lead);
                 TempData["Confirmacao"] = "Lead editado com sucesso!";
 
-                return View("Index", ListarLeads());
+                return View("Index", LeadRepository.ListarLeads());
             }
-            catch (Exception e)
+            catch
             {
                 TempData["Erro"] = "Aconteceu um erro! ";
 
-                return View("Index", ListarLeads());
+                return View("Index", LeadRepository.ListarLeads());
             }
         }
 
@@ -80,13 +91,13 @@ namespace CRM_Crud.Controllers
                 LeadRepository.DeletarLead(id);
                 TempData["Confirmacao"] = "Lead excluido com sucesso!";
 
-                return View("Index", ListarLeads());
+                return View("Index", LeadRepository.ListarLeads());
             }
-            catch (Exception e)
+            catch
             {
                 TempData["Erro"] = "Aconteceu um erro! ";
 
-                return View("Index", ListarLeads());
+                return View("Index", LeadRepository.ListarLeads());
             }
         }
     }

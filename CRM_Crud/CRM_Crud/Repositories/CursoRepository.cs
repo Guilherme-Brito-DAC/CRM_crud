@@ -41,5 +41,32 @@ namespace CRM_Crud.Repositories
             dbSet.Remove(ListarUmCurso(id));
             context.SaveChanges();
         }
+
+        public IList<Curso> Pesquisar(string campo, string pesquisa)
+        {
+
+            IList<Curso> resultado = new List<Curso>();
+
+            switch (campo)
+            {
+                case "titulo":
+                    resultado = dbSet.Where(c => c.titulo.Contains(pesquisa)).ToList();
+                    break;
+
+                case "periodo_letivo":
+                    resultado = dbSet.Where(c => c.periodo_letivo.Contains(pesquisa)).ToList();
+                    break;
+
+                case "categoria":
+                    resultado = dbSet.Where(c => c.categoria.Contains(pesquisa)).ToList();
+                    break;
+
+                default:
+                    resultado = ListarCursos();
+                    break;
+            }
+
+            return resultado;
+        }
     }
 }
