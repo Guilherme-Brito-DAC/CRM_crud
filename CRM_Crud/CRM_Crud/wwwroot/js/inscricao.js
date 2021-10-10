@@ -14,8 +14,8 @@
 }
 
 var cursoSelect = document.getElementById("cursoSelect")
-var cursos = []
 var leadSelect = document.getElementById("leadSelect")
+var cursos = []
 var leads = []
 
 getDados('https://localhost:44303/Lead/ListarLeads')
@@ -55,31 +55,52 @@ leadSelect.onchange = function (e) {
     var id = e.target.value
     var lead_selecionado = leads.find(e => e.id == id);
 
-    lbl_nome.innerHTML = lead_selecionado.nome
-    lbl_email.innerHTML = lead_selecionado.email
-    lbl_telefone.innerHTML = lead_selecionado.telefone
-    lbl_cpf.innerHTML = lead_selecionado.cpf
+    if (lead_selecionado != undefined)
+    {
+        lbl_nome.innerHTML = lead_selecionado.nome
+        lbl_email.innerHTML = lead_selecionado.email
+        lbl_telefone.innerHTML = lead_selecionado.telefone
+        lbl_cpf.innerHTML = lead_selecionado.cpf
+    }
+    else
+    {
+        ResetLead()
+    }
 }
 
 cursoSelect.onchange = function (e) {
     var id = e.target.value
     var curso_selecionado = cursos.find(e => e.id == id);
 
-    lbl_titulo.innerHTML = curso_selecionado.titulo
-    lbl_inicio.innerHTML = curso_selecionado.data_inicio
-    lbl_termino.innerHTML = curso_selecionado.data_termino
-    lbl_inscricoes.innerHTML = curso_selecionado.qnt_de_inscricoes
-    lbl_categoria.innerHTML = curso_selecionado.categoria
-    lbl_periodo_letivo.innerHTML = curso_selecionado.periodo_letivo
+    if (curso_selecionado != undefined) {
+        lbl_titulo.innerHTML = curso_selecionado.titulo
+        lbl_inicio.innerHTML = curso_selecionado.data_inicio
+        lbl_termino.innerHTML = curso_selecionado.data_termino
+        lbl_inscricoes.innerHTML = curso_selecionado.qnt_de_inscricoes
+        lbl_categoria.innerHTML = curso_selecionado.categoria
+        lbl_periodo_letivo.innerHTML = curso_selecionado.periodo_letivo
+    }
+    else
+    {
+        ResetCurso()
+    }
 }
 
 btn_reset.onclick = function () {
+    ResetCurso()
+    ResetLead()
+}
+
+function ResetCurso() {
     lbl_titulo.innerHTML = ""
     lbl_inicio.innerHTML = ""
-    lbl_termino.innerHTML= ""
+    lbl_termino.innerHTML = ""
     lbl_inscricoes.innerHTML = ""
     lbl_categoria.innerHTML = ""
     lbl_periodo_letivo.innerHTML = ""
+}
+
+function ResetLead() {
     lbl_nome.innerHTML = ""
     lbl_email.innerHTML = ""
     lbl_telefone.innerHTML = ""
