@@ -6,6 +6,8 @@ namespace CRM_Crud.Repositories
 {
     public class InscricaoRepository : BaseRepository<Inscricao>, IInscricaoRepository
     {
+        public IList<Inscricao> resultado = new List<Inscricao>();
+
         public InscricaoRepository(ApplicationContext context) : base(context)
         {
 
@@ -51,8 +53,6 @@ namespace CRM_Crud.Repositories
 
         public IList<Inscricao> Pesquisar(string campo, string pesquisa)
         {
-            IList<Inscricao> resultado = new List<Inscricao>();
-
             switch (campo)
             {
                 case "nome":

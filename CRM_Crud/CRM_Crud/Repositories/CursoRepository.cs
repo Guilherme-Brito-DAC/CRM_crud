@@ -8,6 +8,8 @@ namespace CRM_Crud.Repositories
 {
     public class CursoRepository : BaseRepository<Curso>, ICursoRepository
     {
+        public IList<Curso> resultado = new List<Curso>();
+
         public CursoRepository(ApplicationContext context) : base(context)
         {
 
@@ -49,9 +51,6 @@ namespace CRM_Crud.Repositories
 
         public IList<Curso> Pesquisar(string campo, string pesquisa)
         {
-
-            IList<Curso> resultado = new List<Curso>();
-
             switch (campo)
             {
                 case "titulo":

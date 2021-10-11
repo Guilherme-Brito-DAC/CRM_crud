@@ -17,6 +17,7 @@ namespace CRM_Crud.Formatter
         {
             var viewInscricao = new ViewInscricao();
 
+            viewInscricao.id = inscricao.id;
             viewInscricao.nome = inscricao.nome;
             viewInscricao.data_de_inscricao = inscricao.data_de_inscricao;
             viewInscricao.lead_id = inscricao.lead_id;

@@ -6,6 +6,8 @@ namespace CRM_Crud.Repositories
 {
     public class LeadRepository : BaseRepository<Lead>, ILeadRepository
     {
+        public IList<Lead> resultado = new List<Lead>();
+
         public LeadRepository(ApplicationContext context) : base(context)
         {
 
@@ -41,8 +43,6 @@ namespace CRM_Crud.Repositories
 
         public IList<Lead> Pesquisar(string campo,string pesquisa)
         {
-            IList<Lead> resultado = new List<Lead>();
-
             switch (campo)
             {
                 case "nome":
