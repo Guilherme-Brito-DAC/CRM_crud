@@ -1,4 +1,5 @@
 using CRM_Crud.Repositories;
+using CRM_Crud.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace CRM_Crud
             services.AddTransient<ICursoRepository, CursoRepository>();
             services.AddTransient<ILeadRepository, LeadRepository>();
             services.AddTransient<IInscricaoRepository, InscricaoRepository>();
+            services.AddTransient<IErroFiltro, ErroFiltro>();
 
             string connectionString = Configuration.GetConnectionString("Default");
 

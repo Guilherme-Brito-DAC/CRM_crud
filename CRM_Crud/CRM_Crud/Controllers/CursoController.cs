@@ -1,19 +1,21 @@
-﻿using CRM_Crud.Models;
+﻿using CRM_Crud.Filters;
+using CRM_Crud.Models;
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace CRM_Crud.Controllers
 {
     public class CursoController : Controller
     {
         public ICursoRepository cursoRepository;
+        public IErroFiltro ErroFiltro;
 
-        public CursoController(ICursoRepository _cursoRepository)
+        public CursoController(ICursoRepository _cursoRepository, IErroFiltro _ErroFiltro)
         {
             cursoRepository = _cursoRepository;
+            ErroFiltro = _ErroFiltro;
         }
 
         [HttpGet]
@@ -95,6 +97,8 @@ namespace CRM_Crud.Controllers
         {
             try
             {
+                ErroFiltro.VerificaSeAlguemSeInscreveuNesseCurso(id);
+
                 cursoRepository.DeletarCurso(id);
                 TempData["Confirmacao"] = "Curso deletado com sucesso!";
 

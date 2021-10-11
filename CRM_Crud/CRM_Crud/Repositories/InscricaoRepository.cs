@@ -28,16 +28,21 @@ namespace CRM_Crud.Repositories
             return dbSet.ToList();
         }
 
+        public Inscricao ListarUmaInscricao(int id)
+        {
+            return dbSet.Where(c => c.id == id).SingleOrDefault();
+        }
+
         public IList<Inscricao> ListarInscricoesEmUmCurso(int id)
         {
             return dbSet.Where(c => c.curso_id == id).ToList();
         }
 
-        public Inscricao ListarUmaInscricao(int id)
+        public IList<Inscricao> ListarInscricoesDeUmLead(int id)
         {
-            return dbSet.Where(c => c.id == id).SingleOrDefault();
+            return dbSet.Where(c => c.lead_id == id).ToList();
         }
-       
+
         public void DeletarInscricao(int id)
         {
             dbSet.Remove(ListarUmaInscricao(id));

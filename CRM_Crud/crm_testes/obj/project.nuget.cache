@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/9zCzJbK6D8g6SM17+kH5DjKK6UCitKqAK1FH8Awz+2hhZ2LFyO/LRINHgCe7Fm+evRKzHMiP0u1bA/SQLOQig==",
+  "dgSpecHash": "WHssQ2T8hnyUCtI0hKTBZ/vpjYVkxThe+s76ApGU91RcN7turF/p3AEHu0w+kz76IH1CYwTUZ4bxOTHJHEBTsg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\crm_testes\\crm_testes.csproj",
+  "projectFilePath": "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\crm_testes\\crm_testes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GuilhermeBrito\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\GuilhermeBrito\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",

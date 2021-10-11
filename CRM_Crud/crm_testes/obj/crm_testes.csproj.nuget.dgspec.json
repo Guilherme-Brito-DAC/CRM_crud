@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\crm_testes\\crm_testes.csproj": {}
+    "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\crm_testes\\crm_testes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\crm_testes\\crm_testes.csproj": {
+    "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\crm_testes\\crm_testes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\crm_testes\\crm_testes.csproj",
+        "projectUniqueName": "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\crm_testes\\crm_testes.csproj",
         "projectName": "crm_testes",
-        "projectPath": "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\crm_testes\\crm_testes.csproj",
+        "projectPath": "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\crm_testes\\crm_testes.csproj",
         "packagesPath": "C:\\Users\\GuilhermeBrito\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\crm_testes\\obj\\",
+        "outputPath": "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\crm_testes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

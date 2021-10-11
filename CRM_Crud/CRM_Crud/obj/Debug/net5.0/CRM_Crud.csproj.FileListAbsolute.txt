@@ -29,7 +29,6 @@ C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\scopedcs
 C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\CRM_Crud.TagHelpers.input.cache
 C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\CRM_Crud.TagHelpers.output.cache
 C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\CRM_Crud.RazorCoreGenerate.cache
-C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -152,4 +151,3 @@ C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Vi
 C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Inscricao\Index.cshtml.g.cs
 C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Inscricao\Criar.cshtml.g.cs
 C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Inscricao\Editar.cshtml.g.cs
-C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\CRM_Crud.csproj.AssemblyReference.cache

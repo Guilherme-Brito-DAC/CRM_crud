@@ -19,7 +19,5 @@ namespace CRM_Crud
 
             modelBuilder.Entity<Inscricao>().HasKey(t => t.id);
         }
-
-        public DbSet<CRM_Crud.Models.Inscricao> Inscricao { get; set; }
     }
 }

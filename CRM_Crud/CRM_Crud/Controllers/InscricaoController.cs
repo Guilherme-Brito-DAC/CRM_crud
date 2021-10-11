@@ -1,8 +1,8 @@
-﻿using CRM_Crud.Models;
+﻿using CRM_Crud.Filters;
+using CRM_Crud.Models;
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 
 namespace CRM_Crud.Controllers
 {
@@ -10,11 +10,13 @@ namespace CRM_Crud.Controllers
     {
         public IInscricaoRepository InscricaoRepository;
         public ICursoRepository CursoRepository;
+        public IErroFiltro ErroFiltro;
 
-        public InscricaoController(IInscricaoRepository _InscricaoRepository, ICursoRepository _CursoRepository)
+        public InscricaoController(IInscricaoRepository _InscricaoRepository, ICursoRepository _CursoRepository, IErroFiltro _ErroFiltro)
         {
             InscricaoRepository = _InscricaoRepository;
             CursoRepository = _CursoRepository;
+            ErroFiltro = _ErroFiltro;
         }
 
         [HttpGet]
@@ -48,15 +50,8 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                if (!CursoPossuiVaga(Inscricao.curso_id))
-                {
-                    throw new Exception("O curso que está tentando se inscrever não possui espaço");
-                }
-
-                if (LeadDuplicadoEmUmCurso(Inscricao.lead_id, Inscricao.curso_id))
-                {
-                    throw new Exception("Esse lead já foi inscrito nesse curso");
-                }
+                ErroFiltro.CursoPossuiVaga(Inscricao.curso_id);
+                ErroFiltro.LeadDuplicadoEmUmCurso(Inscricao.lead_id, Inscricao.curso_id);
 
                 Inscricao.data_de_inscricao = DateTime.Now;
                 Inscricao.status = "Inscrito";
@@ -105,6 +100,7 @@ namespace CRM_Crud.Controllers
             try
             {
                 InscricaoRepository.DeletarInscricao(id);
+
                 TempData["Confirmacao"] = "Inscrição excluida com sucesso!";
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
@@ -114,38 +110,6 @@ namespace CRM_Crud.Controllers
                 TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
-            }
-        }
-
-        public bool LeadDuplicadoEmUmCurso(int lead_id, int curso_id)
-        {
-            var inscricoes = InscricaoRepository.ListarInscricoesEmUmCurso(curso_id);
-            var leadNoCurso = inscricoes.Where(l => l.lead_id == lead_id).ToList();
-
-            if (leadNoCurso.Count() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool CursoPossuiVaga(int id)
-        {
-            var curso = CursoRepository.ListarUmCurso(id);
-            var max_de_inscricoes = curso.qnt_de_inscricoes;
-
-            var inscricoes = InscricaoRepository.ListarInscricoesEmUmCurso(id).Count;
-
-            if (max_de_inscricoes > inscricoes)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
     }

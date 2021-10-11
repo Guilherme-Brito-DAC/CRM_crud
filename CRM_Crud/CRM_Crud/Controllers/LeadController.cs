@@ -1,18 +1,21 @@
-﻿using CRM_Crud.Models;
+﻿using CRM_Crud.Filters;
+using CRM_Crud.Models;
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace CRM_Crud.Controllers
 {
     public class LeadController : Controller
     {
         public ILeadRepository LeadRepository;
+        public IErroFiltro ErroFiltro;
 
-        public LeadController(ILeadRepository _LeadRepository)
+        public LeadController(ILeadRepository _LeadRepository, IErroFiltro _ErroFiltro)
         {
             LeadRepository = _LeadRepository;
+            ErroFiltro = _ErroFiltro;
         }
 
         [HttpGet]
@@ -94,6 +97,8 @@ namespace CRM_Crud.Controllers
         {
             try
             {
+                ErroFiltro.VerificaSeOLeadEstaInscritoEmAlgumCurso(id);
+
                 LeadRepository.DeletarLead(id);
                 TempData["Confirmacao"] = "Lead excluido com sucesso!";
 
