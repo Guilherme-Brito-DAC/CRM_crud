@@ -55,7 +55,7 @@ namespace CRM_Crud.Filters
 
             var inscricoes = InscricaoRepository.ListarInscricoesEmUmCurso(id).Count;
 
-            if (max_de_inscricoes < inscricoes)
+            if (inscricoes >= max_de_inscricoes)
             {
                 throw new Exception("O curso que está tentando se inscrever não possui espaço");
             }

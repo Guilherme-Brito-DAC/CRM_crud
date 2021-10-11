@@ -26,26 +26,49 @@
         <div class="col">
             <form asp-action="Editar">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="nome" class="control-label"></label>
-                    <input asp-for="nome" class="form-control" />
-                    <span asp-validation-for="nome" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Status</label>
-                    <select id="status" asp-for="status" class="form-control">
-                        <option value="@status.Inscrito">Inscrito</option>
-                        <option value="@status.Classificado">Classificado</option>
-                        <option value="@status.Convocado">Convocado</option>
-                        <option value="@status.Matriculado">Matriculado</option>
-                    </select>
-                </div>
-                <input type="hidden" asp-for="id" />
-                <input type="hidden" asp-for="curso_id" />
-                <input type="hidden" asp-for="lead_id" />
-                <input type="hidden" asp-for="data_de_inscricao" />
-                <div class="form-group">
-                    <input type="submit" value="Editar" class="btn btn-success" />
+
+                <div class="editar_inscricao">
+                    <div>
+                        <div class="form-group">
+                            <label asp-for="nome" class="control-label"></label>
+                            <input asp-for="nome" class="form-control" />
+                            <span asp-validation-for="nome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Status</label>
+                            <select id="status" asp-for="status" class="form-control">
+                                <option value="@status.Inscrito">Inscrito</option>
+                                <option value="@status.Classificado">Classificado</option>
+                                <option value="@status.Convocado">Convocado</option>
+                                <option value="@status.Matriculado">Matriculado</option>
+                            </select>
+                        </div>
+                        <input type="hidden" asp-for="id" />
+                        <input type="hidden" asp-for="curso_id" />
+                        <input type="hidden" asp-for="lead_id" />
+                        <input type="hidden" asp-for="data_de_inscricao" />
+                        <div class="form-group">
+                            <input type="submit" value="Editar" class="btn btn-success" />
+                        </div>
+                    </div>
+                    <div class="informations">
+                        <h1 style="font-size:25px">Lead</h1>
+                        <br />
+                        <div><p>Nome : </p><p id="lbl_nome"></p></div>
+                        <div><p>Email : </p><p id="lbl_email"></p></div>
+                        <div><p>Telefone : </p><p id="lbl_telefone"></p></div>
+                        <div><p>CPF : </p><p id="lbl_cpf" class="cpf"></p></div>
+                    </div>
+                    <div class="informations">
+                        <h1 style="font-size:25px">Curso</h1>
+                        <br />
+                        <div><p>Título : </p><p id="lbl_titulo"></p></div>
+                        <div><p>Inicio : </p><p id="lbl_inicio"></p></div>
+                        <div><p>Termino : </p><p id="lbl_termino"></p></div>
+                        <div><p>Inscrições : </p><p id="lbl_inscricoes"></p></div>
+                        <div><p>Categoria : </p><p id="lbl_categoria"></p></div>
+                        <div><p>Período Letivo : </p><p id="lbl_periodo_letivo"></p></div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -97,5 +120,10 @@
     <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/navbar.js"></script>
+    <script src="~/js/editar_inscricao.js"></script>
+    <script>
+        ListarCurso(@Model.curso_id)
+        ListarLead(@Model.lead_id)
+    </script>
     <script src="~/js/progress.js"></script>
 }

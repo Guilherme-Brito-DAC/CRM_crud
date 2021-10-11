@@ -187,6 +187,13 @@ a {
     transition:0.25s;
 }
 
+.editar_inscricao {
+    width:100%;
+    display: flex;
+    gap:10px;
+    justify-content:space-between;
+}
+
 .cpf:hover {
     filter: blur(0);
 }
