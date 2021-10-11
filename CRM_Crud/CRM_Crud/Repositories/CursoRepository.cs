@@ -35,6 +35,11 @@ namespace CRM_Crud.Repositories
             return dbSet.Where(c => c.id == id).SingleOrDefault();
         }
 
+        public Curso ListarUmCurso(string titulo)
+        {
+            return dbSet.Where(c => c.titulo.Contains(titulo)).SingleOrDefault();
+        }
+
         public void DeletarCurso(int id)
         {
 

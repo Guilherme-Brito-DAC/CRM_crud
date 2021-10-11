@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using CRM_Crud.Formatter;
 
 namespace CRM_Crud
 {
@@ -27,6 +28,7 @@ namespace CRM_Crud
             services.AddTransient<ILeadRepository, LeadRepository>();
             services.AddTransient<IInscricaoRepository, InscricaoRepository>();
             services.AddTransient<IErroFiltro, ErroFiltro>();
+            services.AddTransient<IInscricaoFormatter, InscricaoFormatter>();
 
             string connectionString = Configuration.GetConnectionString("Default");
 

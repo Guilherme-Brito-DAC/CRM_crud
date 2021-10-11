@@ -1,8 +1,11 @@
 ﻿using CRM_Crud.Filters;
+using CRM_Crud.Formatter;
 using CRM_Crud.Models;
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CRM_Crud.Controllers
 {
@@ -11,18 +14,27 @@ namespace CRM_Crud.Controllers
         public IInscricaoRepository InscricaoRepository;
         public ICursoRepository CursoRepository;
         public IErroFiltro ErroFiltro;
+        public IInscricaoFormatter InscricaoFormatter;
 
-        public InscricaoController(IInscricaoRepository _InscricaoRepository, ICursoRepository _CursoRepository, IErroFiltro _ErroFiltro)
+        public InscricaoController(IInscricaoRepository _InscricaoRepository, ICursoRepository _CursoRepository, IErroFiltro _ErroFiltro, IInscricaoFormatter _InscricaoFormatter)
         {
             InscricaoRepository = _InscricaoRepository;
             CursoRepository = _CursoRepository;
             ErroFiltro = _ErroFiltro;
+            InscricaoFormatter = _InscricaoFormatter;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            return View(InscricaoRepository.ListarInscricoes());
+            return View(ListarViewInscricoes());
+        }
+
+        public IList<ViewInscricao> ListarViewInscricoes()
+        {
+            var inscricoes = InscricaoRepository.ListarInscricoes();
+            var viewInscricoes = InscricaoFormatter.ListaDeInscricoesParaViewInscricao(inscricoes);
+            return viewInscricoes;
         }
 
         [HttpGet]
@@ -36,11 +48,20 @@ namespace CRM_Crud.Controllers
         {
             if (!string.IsNullOrEmpty(pesquisa))
             {
-                return View("Index", InscricaoRepository.Pesquisar(campo, pesquisa));
+                if (campo == "titulo")
+                {
+                    var curso = CursoRepository.ListarUmCurso(pesquisa);
+                    pesquisa = curso != null ? curso.id.ToString() : "0";
+                }
+
+                var inscricoes = InscricaoRepository.Pesquisar(campo, pesquisa);
+                var viewInscricoes = InscricaoFormatter.ListaDeInscricoesParaViewInscricao(inscricoes);
+
+                return View("Index", viewInscricoes);
             }
             else
             {
-                return View("Index", InscricaoRepository.ListarInscricoes());
+                return View("Index", ListarViewInscricoes());
             }
         }
 
@@ -59,16 +80,15 @@ namespace CRM_Crud.Controllers
 
                 TempData["Confirmacao"] = "Inscrição criada com sucesso!";
 
-                return View("Index", InscricaoRepository.ListarInscricoes());
-
+                return View("Index", ListarViewInscricoes());
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
-                return View("Index", InscricaoRepository.ListarInscricoes());
+                return View("Index", ListarViewInscricoes());
             }
-        } 
+        }
 
         public ActionResult Editar(int id)
         {
@@ -85,13 +105,13 @@ namespace CRM_Crud.Controllers
 
                 TempData["Confirmacao"] = "Inscrição editada com sucesso!";
 
-                return View("Index", InscricaoRepository.ListarInscricoes());
+                return View("Index", ListarViewInscricoes());
             }
             catch (Exception e)
             {
                 TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
-                return View("Index", InscricaoRepository.ListarInscricoes());
+                return View("Index", ListarViewInscricoes());
             }
         }
 
@@ -103,13 +123,13 @@ namespace CRM_Crud.Controllers
 
                 TempData["Confirmacao"] = "Inscrição excluida com sucesso!";
 
-                return View("Index", InscricaoRepository.ListarInscricoes());
+                return View("Index", ListarViewInscricoes());
             }
             catch (Exception e)
             {
                 TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
-                return View("Index", InscricaoRepository.ListarInscricoes());
+                return View("Index", ListarViewInscricoes());
             }
         }
     }

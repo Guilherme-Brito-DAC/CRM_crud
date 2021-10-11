@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CRM_Crud.Models.Inscricao>
+﻿@model IEnumerable<CRM_Crud.Models.ViewInscricao>
 
 @{
     ViewData["Title"] = "Inscrições";
@@ -20,6 +20,8 @@
     }
 }
 
+<script src="~/lib/sortable/sortable.min.js"></script>
+
 <div class="item">
     <div class="tablehead">
         <h1 class="titulomid">Inscrições</h1>
@@ -29,16 +31,19 @@
         <select name="campo">
             <option value="nome">Nome</option>
             <option value="status">Status</option>
+            <option value="titulo">Curso</option>
         </select>
         <input type="text" name="pesquisa" placeholder="Pesquise aqui" />
         <button type="submit"><img src="https://img.icons8.com/ios-glyphs/25/ffffff/search.png" /></button>
     </form>
-    <script src="~/lib/sortable/sortable.min.js"></script>
     <table class="sortable-theme-bootstrap" data-sortable>
         <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.curso)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.data_de_inscricao)
@@ -55,6 +60,9 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.curso)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.data_de_inscricao)

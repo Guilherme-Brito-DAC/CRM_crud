@@ -63,6 +63,10 @@ namespace CRM_Crud.Repositories
                     resultado = dbSet.Where(c => c.status.Contains(pesquisa)).ToList();
                     break;
 
+                case "titulo":
+                    resultado = dbSet.Where(c => c.curso_id == int.Parse(pesquisa)).ToList();
+                    break;
+
                 default:
                     resultado = ListarInscricoes();
                     break;
