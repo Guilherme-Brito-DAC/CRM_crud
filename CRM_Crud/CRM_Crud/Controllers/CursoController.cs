@@ -1,6 +1,7 @@
 ﻿using CRM_Crud.Models;
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -57,9 +58,9 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", cursoRepository.ListarCursos());
             }
-            catch 
+            catch (Exception e)
             {
-                TempData["Erro"] = "Aconteceu um erro! ";
+                TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", cursoRepository.ListarCursos());
             }
@@ -82,9 +83,9 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", cursoRepository.ListarCursos());
             }
-            catch 
+            catch (Exception e)
             {
-                TempData["Erro"] = "Aconteceu um erro! ";
+                TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", cursoRepository.ListarCursos());
             }
@@ -99,9 +100,9 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", cursoRepository.ListarCursos());
             }
-            catch 
+            catch (Exception e)
             {
-                TempData["Erro"] = "Aconteceu um erro! ";
+                TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", cursoRepository.ListarCursos());
             }

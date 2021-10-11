@@ -57,9 +57,9 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", LeadRepository.ListarLeads());
             }
-            catch
+            catch (Exception e)
             {
-                TempData["Erro"] = "Aconteceu um erro! ";
+                TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", LeadRepository.ListarLeads());
             }
@@ -82,9 +82,9 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", LeadRepository.ListarLeads());
             }
-            catch
+            catch (Exception e)
             {
-                TempData["Erro"] = "Aconteceu um erro! ";
+                TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", LeadRepository.ListarLeads());
             }
@@ -99,9 +99,9 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", LeadRepository.ListarLeads());
             }
-            catch
+            catch (Exception e)
             {
-                TempData["Erro"] = "Aconteceu um erro! ";
+                TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", LeadRepository.ListarLeads());
             }

@@ -14,6 +14,7 @@ namespace CRM_Crud.Models
         public string email { get; set; }
         [Required(ErrorMessage = "Telefone é obrigatório")]
         [Display(Name = "Telefone")]
+        [MinLength(14, ErrorMessage = "O Telefone tem que possuir mais que 14 caracteres")]
         [MaxLength(15, ErrorMessage = "O Telefone tem que possuir menos que 15 caractéres")]
         public string telefone { get; set; }
         [Display(Name = "CPF")]

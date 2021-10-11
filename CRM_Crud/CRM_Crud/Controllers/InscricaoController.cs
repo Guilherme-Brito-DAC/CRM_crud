@@ -2,6 +2,7 @@
 using CRM_Crud.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace CRM_Crud.Controllers
 {
@@ -47,30 +48,32 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                if (CursoPossuiVaga(Inscricao.curso_id))
+                if (!CursoPossuiVaga(Inscricao.curso_id))
                 {
-                    Inscricao.data_de_inscricao = DateTime.Now;
-                    Inscricao.status = "Inscrito";
-                    InscricaoRepository.CriarInscricao(Inscricao);
-
-                    TempData["Confirmacao"] = "Inscrição criada com sucesso!";
-
-                    return View("Index", InscricaoRepository.ListarInscricoes());
+                    throw new Exception("O curso que está tentando se inscrever não possui espaço");
                 }
-                else
+
+                if (LeadDuplicadoEmUmCurso(Inscricao.lead_id, Inscricao.curso_id))
                 {
-                    TempData["Erro"] = "O curso que está tentando se inscrever não possui espaço";
-
-                    return View("Index", InscricaoRepository.ListarInscricoes());
+                    throw new Exception("Esse lead já foi inscrito nesse curso");
                 }
+
+                Inscricao.data_de_inscricao = DateTime.Now;
+                Inscricao.status = "Inscrito";
+                InscricaoRepository.CriarInscricao(Inscricao);
+
+                TempData["Confirmacao"] = "Inscrição criada com sucesso!";
+
+                return View("Index", InscricaoRepository.ListarInscricoes());
+
             }
-            catch 
+            catch(Exception e)
             {
-                TempData["Erro"] = "Aconteceu um erro! ";
+                TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
             }
-        }
+        } 
 
         public ActionResult Editar(int id)
         {
@@ -89,9 +92,9 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
             }
-            catch 
+            catch (Exception e)
             {
-                TempData["Erro"] = "Aconteceu um erro! ";
+                TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
             }
@@ -106,11 +109,26 @@ namespace CRM_Crud.Controllers
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
             }
-            catch 
+            catch (Exception e)
             {
-                TempData["Erro"] = "Aconteceu um erro! ";
+                TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
                 return View("Index", InscricaoRepository.ListarInscricoes());
+            }
+        }
+
+        public bool LeadDuplicadoEmUmCurso(int lead_id, int curso_id)
+        {
+            var inscricoes = InscricaoRepository.ListarInscricoesEmUmCurso(curso_id);
+            var leadNoCurso = inscricoes.Where(l => l.lead_id == lead_id).ToList();
+
+            if (leadNoCurso.Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
