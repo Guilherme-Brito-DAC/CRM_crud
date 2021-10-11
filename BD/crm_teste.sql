@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Out-2021 às 23:38
+-- Tempo de geração: 11-Out-2021 às 16:40
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 7.3.28
 
@@ -46,8 +46,8 @@ CREATE TABLE `curso` (
 CREATE TABLE `inscricao` (
   `id` int(11) NOT NULL,
   `nome` varchar(250) NOT NULL,
-  `data` datetime NOT NULL,
-  `status` enum('inscrito','classificado','convocado','matriculado') NOT NULL,
+  `data_de_inscricao` datetime NOT NULL,
+  `status` enum('Inscrito','Classificado','Convocado','Matriculado') NOT NULL,
   `lead_id` int(11) NOT NULL,
   `curso_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -62,8 +62,8 @@ CREATE TABLE `lead` (
   `id` int(11) NOT NULL,
   `nome` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
-  `telefone` varchar(9) NOT NULL,
-  `cpf` varchar(11) NOT NULL
+  `telefone` varchar(15) NOT NULL,
+  `cpf` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -74,7 +74,8 @@ CREATE TABLE `lead` (
 -- Índices para tabela `curso`
 --
 ALTER TABLE `curso`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `titulo` (`titulo`);
 
 --
 -- Índices para tabela `inscricao`
@@ -99,19 +100,19 @@ ALTER TABLE `lead`
 -- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `inscricao`
 --
 ALTER TABLE `inscricao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `lead`
 --
 ALTER TABLE `lead`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restrições para despejos de tabelas
