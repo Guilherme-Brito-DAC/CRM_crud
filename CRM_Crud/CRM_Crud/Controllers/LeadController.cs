@@ -1,12 +1,14 @@
 ﻿using CRM_Crud.Filters;
 using CRM_Crud.Models;
 using CRM_Crud.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 
 namespace CRM_Crud.Controllers
 {
+    [Authorize]
     public class LeadController : Controller
     {
         public ILeadRepository LeadRepository;

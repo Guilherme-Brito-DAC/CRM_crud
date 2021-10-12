@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\CRM_Crud\\CRM_Crud.csproj": {}
+    "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\CRM_Crud\\CRM_Crud.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\CRM_Crud\\CRM_Crud.csproj": {
+    "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\CRM_Crud\\CRM_Crud.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\CRM_Crud\\CRM_Crud.csproj",
+        "projectUniqueName": "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\CRM_Crud\\CRM_Crud.csproj",
         "projectName": "CRM_Crud",
-        "projectPath": "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\CRM_Crud\\CRM_Crud.csproj",
+        "projectPath": "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\CRM_Crud\\CRM_Crud.csproj",
         "packagesPath": "C:\\Users\\GuilhermeBrito\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\CRM_Crud\\obj\\",
+        "outputPath": "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\CRM_Crud\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

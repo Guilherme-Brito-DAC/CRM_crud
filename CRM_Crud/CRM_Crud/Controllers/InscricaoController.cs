@@ -2,13 +2,14 @@
 using CRM_Crud.Formatter;
 using CRM_Crud.Models;
 using CRM_Crud.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace CRM_Crud.Controllers
 {
+    [Authorize]
     public class InscricaoController : Controller
     {
         public IInscricaoRepository InscricaoRepository;

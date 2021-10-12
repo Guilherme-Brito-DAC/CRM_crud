@@ -18,6 +18,8 @@ namespace CRM_Crud
             modelBuilder.Entity<Lead>().HasKey(t => t.id);
 
             modelBuilder.Entity<Inscricao>().HasKey(t => t.id);
+
+            modelBuilder.Entity<Usuario>().HasKey(t => t.id);
         }
     }
 }

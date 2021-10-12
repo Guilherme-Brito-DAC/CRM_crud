@@ -1,0 +1,64 @@
+﻿@model CRM_Crud.Models.Usuario
+
+@{
+    ViewData["Title"] = "Login";
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.js" integrity="sha512-eOUPKZXJTfgptSYQqVilRmxUNYm0XVHwcRHD4mdtCLWf/fC9XWe98IT8H1xzBkLL4Mo9GL0xWMSJtgS5te9rQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    if (TempData["Confirmacao"] != null)
+    {
+        <script>
+            alertify.success("@TempData["Confirmacao"].ToString()");
+        </script>
+    }
+
+    if (TempData["Erro"] != null)
+    {
+        <script>
+            alertify.error("@TempData["Erro"].ToString()");
+        </script>
+    }
+}
+
+<div class="login">
+    <h1 style="text-align:center;font-size:25px">Login</h1>
+    <br />
+    <hr />
+    <br />
+    <form asp-action="Login" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="login" class="control-label"></label>
+            <input asp-for="login" class="form-control" />
+            <span asp-validation-for="login" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="senha" class="control-label"></label>
+            <input asp-for="senha" type="password" id="input_telefone" class="form-control" />
+            <span asp-validation-for="senha" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" style="width:100%" value="Login" class="btn btn-success" />
+        </div>
+    </form>
+    <br />
+    <span style="display:flex;gap:20px">
+        <label style="color:#404040">Não possui uma conta ainda? </label>
+        <a style="text-decoration:none;" asp-action="Cadastro">Se Cadastrar</a>
+    </span>
+</div>
+
+
+
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/navbar.js"></script>
+    <script src="~/lib/jquery-mask/dist/jquery.mask.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

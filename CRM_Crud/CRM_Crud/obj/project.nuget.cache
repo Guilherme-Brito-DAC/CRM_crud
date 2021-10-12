@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7uhg/+AVGjr0jVu5CQig2cThcOfZaBqnlOADixA2NO8tZVucRO+DV33DV3xYt3zpa/t7fZ8l2Gt2MBiFweNtUQ==",
+  "dgSpecHash": "/Ou1DKU8yqkEFqPn3hEfO+7fZ4Fe/tdAyj7YpLsbhdeWs6K+ofTBMA9Jf6AsDeZ4UTFfpGsCmivn1Lc5JIJkdQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\CRM_Crud\\CRM_Crud.csproj",
+  "projectFilePath": "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\CRM_Crud\\CRM_Crud.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GuilhermeBrito\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\GuilhermeBrito\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
