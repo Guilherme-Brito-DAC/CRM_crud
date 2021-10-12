@@ -28,12 +28,18 @@
         <br />
         <div class="form-group">
             <label asp-for="senha" class="control-label"></label>
-            <input asp-for="senha" type="password" id="input_telefone" class="form-control" />
-            <span asp-validation-for="senha" class="text-danger"></span>
+            <input asp-for="senha" type="password" id="input_senha" class="form-control" />
+            <span id="lbl_senha" class="text-danger"></span>
         </div>
         <br />
         <div class="form-group">
-            <input type="submit" style="width:100%" value="Login" class="btn btn-success" />
+            <label class="control-label">Confirmar Senha</label>
+            <input type="password" id="input_Consenha" class="form-control" />
+            <span id="lbl_confirmar_senha" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" style="width:100%" value="Cadastrar" id="btn_cadastrar" class="btn btn-success" disabled/>
         </div>
     </form>
     <br />
@@ -45,9 +51,9 @@
 
 
 @section scripts {
+    <script src="~/js/confirmarSenha.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/navbar.js"></script>
     <script src="~/lib/jquery-mask/dist/jquery.mask.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yi9wrEu1riixz3w9uQS4BpjEEP18NRbbanxzpySfLL/Cvy9ljhJfRNQ3Gy+nqWB0Tpa5/KyDXq0uszoqCpflpg==",
+  "dgSpecHash": "6/VYiSJBdOa2mJdbJyxQTq9cenQ64h0j7PlakDXEGV3Zw20psO5bgpwQduXiKfoPksWVDcASFZUlVAeKxs/hXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GuilhermeBrito\\source\\repos\\CRM_Crud\\crm_testes\\crm_testes.csproj",
+  "projectFilePath": "C:\\Users\\GuilhermeBrito\\source\\repos\\crm_crud\\crm_testes\\crm_testes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GuilhermeBrito\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\GuilhermeBrito\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",

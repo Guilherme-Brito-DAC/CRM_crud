@@ -17,12 +17,6 @@ namespace CRM_Crud.Repositories
             context.SaveChanges();
         }
 
-        public void EditarUsuario(Usuario Usuario)
-        {
-            dbSet.Update(Usuario);
-            context.SaveChanges();
-        }
-
         public bool Login(Usuario Usuario)
         {
             var usuario = dbSet.Where(c => c.login == Usuario.login && c.senha == Usuario.senha).SingleOrDefault();
@@ -35,20 +29,14 @@ namespace CRM_Crud.Repositories
             return false;
         }
 
-        public IList<Usuario> ListarUsuarios()
-        {
-            return dbSet.ToList();
-        }
-
         public Usuario ListarUmUsuario(int id)
         {
             return dbSet.Where(c => c.id == id).SingleOrDefault();
         }
 
-        public void DeletarUsuario(int id)
+        public Usuario ListarUmUsuario(string login)
         {
-            dbSet.Remove(ListarUmUsuario(id));
-            context.SaveChanges();
+            return dbSet.Where(c => c.login == login).SingleOrDefault();
         }
     }
 }

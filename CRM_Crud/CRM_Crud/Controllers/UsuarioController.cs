@@ -60,10 +60,17 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                usuarioRepository.CriarUsuario(usuario);
-                TempData["Confirmacao"] = "Usuário cadastrado com sucesso!";
+                var user = usuarioRepository.ListarUmUsuario(usuario.login);
 
-                return View("Login");
+                if (user == null)
+                {
+                    usuarioRepository.CriarUsuario(usuario);
+                    TempData["Confirmacao"] = "Usuário cadastrado com sucesso!";
+
+                    return View("Login");
+                }
+
+                throw new Exception("Já existe um usuário com este login!");
             }
             catch (Exception e)
             {
