@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace CRM_Crud.Controllers
 {
-    [AllowAnonymous]
     public class UsuarioController : Controller
     {
         public IUsuarioRepository usuarioRepository;
@@ -22,6 +21,7 @@ namespace CRM_Crud.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
@@ -29,6 +29,7 @@ namespace CRM_Crud.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(Usuario usuario)
         {
             if (usuarioRepository.Login(usuario))
@@ -36,6 +37,7 @@ namespace CRM_Crud.Controllers
                 var claims = new List<Claim>();
                 claims.Add(new Claim("username", usuario.login));
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, usuario.login));
+                claims.Add(new Claim(ClaimTypes.Name, usuario.login));
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
@@ -49,6 +51,7 @@ namespace CRM_Crud.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Cadastro()
         {
             return View();
@@ -56,6 +59,7 @@ namespace CRM_Crud.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public IActionResult Cadastro(Usuario usuario)
         {
             try
@@ -81,11 +85,50 @@ namespace CRM_Crud.Controllers
 
         [HttpGet]
         [Authorize]
+        public IActionResult Conta()
+        {
+            return View(usuarioRepository.ListarUmUsuario(User.Identity.Name));
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Editar(Usuario Usuario)
+        {
+            try
+            {
+                usuarioRepository.EditarUsuario(Usuario);
+                return Redirect("Logout");
+            }
+            catch
+            {
+                TempData["Erro"] = "Algum erro aconteceu na hora de deletar! ";
+                return Redirect("Conta");
+            }
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Deletar([FromBody] int id)
+        {
+            try
+            {
+                usuarioRepository.DeletarUsuario(id);
+                return Redirect("Logout");
+            }
+            catch
+            {
+                TempData["Erro"] = "Algum erro aconteceu na hora de deletar! ";
+                return Redirect("Conta");
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
 
-            TempData["Confirmacao"] = "Tchau! Nós sentiremos sua falta";
+            TempData["Confirmacao"] = "Tchau! Volte sempre";
 
             return Redirect("login");
         }

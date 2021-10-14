@@ -30,7 +30,7 @@ namespace CRM_Crud.Controllers
         public IList<Curso> ListarCursos()
         {
             return cursoRepository.ListarCursos();
-        }
+        }   
 
         [HttpGet]
         public ActionResult Pesquisar(string pesquisa, string campo)
@@ -95,7 +95,7 @@ namespace CRM_Crud.Controllers
             }
         }
 
-        [Authorize]
+        [HttpPost]
         public ActionResult Deletar(int id)
         {
             try

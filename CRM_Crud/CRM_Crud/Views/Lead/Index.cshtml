@@ -72,7 +72,10 @@
                     </td>
                     <td style="display:flex;gap:30px;">
                         <a asp-action="Editar" asp-route-id="@item.id"><img src="https://img.icons8.com/ios-glyphs/30/edb10c/edit--v1.png" /></a>
-                        <a style="cursor:pointer" onclick="Confirmar(@item.id)"><img src="https://img.icons8.com/color/30/000000/delete-sign--v1.png" /></a>
+                        <form asp-action="Deletar" method="post" id="delete_form_@item.id">
+                            <input type="hidden" name="id" value="@item.id"/>
+                            <a style="cursor:pointer" onclick="Confirmar(@item.id)"><img src="https://img.icons8.com/color/30/000000/delete-sign--v1.png" /></a>
+                        </form>
                     </td>
                 </tr>
             }
@@ -86,7 +89,7 @@
 
             alertify.confirm("Tem certeza que deseja excluir esse lead?",
                 function () {
-                    window.location.href = `/lead/deletar/${id}`;
+                    document.getElementById(`delete_form_${id}`).submit();
                 },
                 function () {
 

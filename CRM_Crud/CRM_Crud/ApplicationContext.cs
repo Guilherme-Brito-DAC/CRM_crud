@@ -21,5 +21,7 @@ namespace CRM_Crud
 
             modelBuilder.Entity<Usuario>().HasKey(t => t.id);
         }
+
+        public DbSet<CRM_Crud.Models.Usuario> Usuario { get; set; }
     }
 }

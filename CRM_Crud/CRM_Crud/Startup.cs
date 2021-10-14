@@ -1,13 +1,13 @@
+using System;
 using CRM_Crud.Repositories;
 using CRM_Crud.Filters;
+using CRM_Crud.Formatter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using CRM_Crud.Formatter;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace CRM_Crud
@@ -27,10 +27,10 @@ namespace CRM_Crud
 
             services.AddTransient<ICursoRepository, CursoRepository>();
             services.AddTransient<ILeadRepository, LeadRepository>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             services.AddTransient<IInscricaoRepository, InscricaoRepository>();
             services.AddTransient<IErroFiltro, ErroFiltro>();
             services.AddTransient<IInscricaoFormatter, InscricaoFormatter>();
-            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
             string connectionString = Configuration.GetConnectionString("Default");
 

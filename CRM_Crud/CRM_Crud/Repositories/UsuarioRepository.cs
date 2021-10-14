@@ -1,5 +1,4 @@
 ﻿using CRM_Crud.Models;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace CRM_Crud.Repositories
@@ -37,6 +36,18 @@ namespace CRM_Crud.Repositories
         public Usuario ListarUmUsuario(string login)
         {
             return dbSet.Where(c => c.login == login).SingleOrDefault();
+        }
+
+        public void EditarUsuario(Usuario usuario)
+        {
+            dbSet.Update(usuario);
+            context.SaveChanges();
+        }
+
+        public void DeletarUsuario(int id)
+        {
+            dbSet.Remove(ListarUmUsuario(id));
+            context.SaveChanges();
         }
     }
 }

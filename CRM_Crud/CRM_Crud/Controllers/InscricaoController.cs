@@ -116,6 +116,7 @@ namespace CRM_Crud.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult Deletar(int id)
         {
             try

@@ -154,3 +154,4 @@ C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Vi
 C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Usuario\Login.cshtml.g.cs
 C:\Users\GuilhermeBrito\source\repos\CRM_Crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Usuario\Cadastro.cshtml.g.cs
 C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\CRM_Crud.csproj.AssemblyReference.cache
+C:\Users\GuilhermeBrito\source\repos\crm_crud\CRM_Crud\obj\Debug\net5.0\Razor\Views\Usuario\Conta.cshtml.g.cs

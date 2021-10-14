@@ -9,5 +9,7 @@ namespace CRM_Crud.Repositories
         Usuario ListarUmUsuario(int id);
         Usuario ListarUmUsuario(string login);
         bool Login(Usuario Usuario);
+        void DeletarUsuario(int id);
+        void EditarUsuario(Usuario usuario);
     }
 }

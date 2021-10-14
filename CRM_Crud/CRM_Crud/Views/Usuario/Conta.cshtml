@@ -1,0 +1,71 @@
+﻿@model CRM_Crud.Models.Usuario
+
+@{
+    ViewData["Title"] = "Conta";
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.js" integrity="sha512-eOUPKZXJTfgptSYQqVilRmxUNYm0XVHwcRHD4mdtCLWf/fC9XWe98IT8H1xzBkLL4Mo9GL0xWMSJtgS5te9rQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    if (TempData["Confirmacao"] != null)
+    {
+        <script>
+            alertify.success("@TempData["Confirmacao"].ToString()");
+        </script>
+    }
+
+    if (TempData["Erro"] != null)
+    {
+        <script>
+            alertify.error("@TempData["Erro"].ToString()");
+        </script>
+    }
+}
+
+<div class="item">
+    <div class="tablehead">
+        <h1 class="titulomid">Lead</h1>
+        <a asp-action="Index">Voltar</a>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <form asp-action="Editar" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="login" class="control-label"></label>
+                    <input asp-for="login" class="form-control" />
+                    <span asp-validation-for="login" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="senha" class="control-label"></label>
+                    <input asp-for="senha" class="form-control" />
+                    <span asp-validation-for="senha" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="id" />
+                <div class="form-group">
+                    <form asp-action="Deletar" method="post" id="delete_form">
+                        <input type="hidden" name="id" value="@Model.id" />
+                        <a style="cursor:pointer" onclick="Confirmar(@Model.id)" style="color:white">Deletar Conta</a>
+                    </form>
+                    <input type="submit" value="Editar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function Confirmar(id) {
+
+            alertify.confirm("Tem certeza que deseja excluir esse lead?",
+                function () {
+                    document.getElementById(`delete_form`).submit();
+                },
+                function () {
+
+                }
+            ).set({ title: "Deletar" }).set({ labels: { ok: 'Tenho', cancel: 'Cancelar' } });
+        }
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
