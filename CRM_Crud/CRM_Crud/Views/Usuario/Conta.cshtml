@@ -42,12 +42,12 @@
                 </div>
                 <input type="hidden" asp-for="id" />
                 <div class="form-group">
-                    <form asp-action="Deletar" method="post" id="delete_form">
-                        <input type="hidden" name="id" value="@Model.id" />
-                        <a style="cursor:pointer" onclick="Confirmar(@Model.id)" style="color:white">Deletar Conta</a>
-                    </form>
                     <input type="submit" value="Editar" class="btn btn-primary" />
                 </div>
+            </form>
+            <form asp-action="Deletar" method="post" id="delete_form">
+                <input type="hidden" name="id" value="@Model.id" />
+                <a onclick="Confirmar()" class="btn btn-danger">Deletar Conta</a>
             </form>
         </div>
     </div>
@@ -55,11 +55,10 @@
 
 @section Scripts {
     <script>
-        function Confirmar(id) {
-
-            alertify.confirm("Tem certeza que deseja excluir esse lead?",
+        function Confirmar() {
+            alertify.confirm("Tem certeza que deseja excluir essa conta?",
                 function () {
-                    document.getElementById(`delete_form`).submit();
+                    document.getElementById("delete_form").submit();
                 },
                 function () {
 

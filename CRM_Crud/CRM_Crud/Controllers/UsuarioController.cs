@@ -108,7 +108,7 @@ namespace CRM_Crud.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult Deletar([FromBody] int id)
+        public IActionResult Deletar(int id)
         {
             try
             {

@@ -182,9 +182,14 @@ a {
     color: #fff;
 }
 
+.btn-danger{
+    color:white;
+    cursor:pointer;
+}
+
 .cpf {
     filter: blur(0.17rem);
-    transition:0.25s;
+    transition: 0.25s;
 }
 
 .editar_inscricao {
