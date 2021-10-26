@@ -29,7 +29,11 @@ namespace CRM_Crud
             services.AddTransient<ILeadRepository, LeadRepository>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             services.AddTransient<IInscricaoRepository, InscricaoRepository>();
-            services.AddTransient<IErroFiltro, ErroFiltro>();
+
+            services.AddTransient<ICursoFiltro, CursoFiltro>();
+            services.AddTransient<IInscricaoFiltro, InscricaoFiltro>();
+            services.AddTransient<ILeadFiltro, LeadFiltro>();
+
             services.AddTransient<IInscricaoFormatter, InscricaoFormatter>();
 
             string connectionString = Configuration.GetConnectionString("Default");

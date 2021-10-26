@@ -14,15 +14,17 @@ namespace CRM_Crud.Controllers
     {
         public IInscricaoRepository InscricaoRepository;
         public ICursoRepository CursoRepository;
-        public IErroFiltro ErroFiltro;
         public IInscricaoFormatter InscricaoFormatter;
+        public IInscricaoFiltro InscricaoFiltro;
+        public ICursoFiltro CursoFiltro;
 
-        public InscricaoController(IInscricaoRepository _InscricaoRepository, ICursoRepository _CursoRepository, IErroFiltro _ErroFiltro, IInscricaoFormatter _InscricaoFormatter)
+        public InscricaoController(IInscricaoRepository _InscricaoRepository, ICursoRepository _CursoRepository, IInscricaoFormatter _InscricaoFormatter, IInscricaoFiltro _InscricaoFiltro, ICursoFiltro _CursoFiltro)
         {
             InscricaoRepository = _InscricaoRepository;
             CursoRepository = _CursoRepository;
-            ErroFiltro = _ErroFiltro;
             InscricaoFormatter = _InscricaoFormatter;
+            InscricaoFiltro = _InscricaoFiltro;
+            CursoFiltro = _CursoFiltro;
         }
 
         [HttpGet]
@@ -72,8 +74,8 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                ErroFiltro.CursoPossuiVaga(Inscricao.curso_id);
-                ErroFiltro.LeadDuplicadoEmUmCurso(Inscricao.lead_id, Inscricao.curso_id);
+                CursoFiltro.CursoPossuiVaga(Inscricao.curso_id);
+                InscricaoFiltro.LeadDuplicadoEmUmCurso(Inscricao.lead_id, Inscricao.curso_id);
 
                 Inscricao.data_de_inscricao = DateTime.Now;
                 Inscricao.status = "Inscrito";

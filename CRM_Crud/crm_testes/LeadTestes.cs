@@ -23,13 +23,11 @@ namespace CRM_testes
             var context = new ApplicationContext(options);
 
             var repoLead = new LeadRepository(context);
-            var repoInscricao = new InscricaoRepository(context);
-            var repoCurso = new CursoRepository(context);
 
-            var mockFiltro = new Mock<ErroFiltro>(repoInscricao, repoCurso, repoLead);
-            var filtro = mockFiltro.Object;
+            var mockLeadFiltro = new Mock<LeadFiltro>();
+            var mockInscricaoFiltro = new Mock<InscricaoFiltro>();
 
-            var controller = new LeadController(repoLead, filtro);
+            var controller = new LeadController(repoLead, mockLeadFiltro.Object, mockInscricaoFiltro.Object);
 
             var tempDataProvider = new Mock<ITempDataProvider>();
             var httpContext = new DefaultHttpContext();
@@ -54,18 +52,19 @@ namespace CRM_testes
         public void CriacaoDeLeadComDadosNaoPreenchidosRetornaBadRequest()
         {
             //arrange
+
             var options = new DbContextOptionsBuilder<ApplicationContext>()
                 .UseInMemoryDatabase("CRM_testes").Options;
             var context = new ApplicationContext(options);
 
             var repoLead = new LeadRepository(context);
-            var repoInscricao = new InscricaoRepository(context);
-            var repoCurso = new CursoRepository(context);
 
-            var mockFiltro = new Mock<ErroFiltro>(repoInscricao, repoCurso, repoLead);
-            var filtro = mockFiltro.Object;
+            var mockLeadFiltro = new Mock<LeadFiltro>();
+            var leadFiltro = mockLeadFiltro.Object;
+            var mockInscricaoFiltro = new Mock<InscricaoFiltro>();
+            var inscricaoFiltro = mockInscricaoFiltro.Object;
 
-            var controller = new LeadController(repoLead, filtro);
+            var controller = new LeadController(repoLead, leadFiltro, inscricaoFiltro);
 
             var tempDataProvider = new Mock<ITempDataProvider>();
             var httpContext = new DefaultHttpContext();
@@ -76,38 +75,6 @@ namespace CRM_testes
             lead.telefone = "";
             lead.cpf = "";
             lead.email = "";
-
-            //act
-
-            var retorno = controller.Criar(lead);
-
-            //assert
-
-            Assert.IsType<BadRequestObjectResult>(retorno);
-        }
-
-        [Fact]
-        public void CriacaoDeLeadComDadosNaoPreenchidosRetornaBadRequest()
-        {
-            //arrange
-            var options = new DbContextOptionsBuilder<ApplicationContext>()
-                .UseInMemoryDatabase("CRM_testes").Options;
-            var context = new ApplicationContext(options);
-
-            var repoLead = new LeadRepository(context);
-            var repoInscricao = new InscricaoRepository(context);
-            var repoCurso = new CursoRepository(context);
-
-            var mockFiltro = new Mock<ErroFiltro>(repoInscricao, repoCurso, repoLead);
-            var filtro = mockFiltro.Object;
-
-            var controller = new LeadController(repoLead, filtro);
-
-            var tempDataProvider = new Mock<ITempDataProvider>();
-            var httpContext = new DefaultHttpContext();
-            controller.TempData = new TempDataDictionary(httpContext, tempDataProvider.Object);
-
-            
 
             //act
 

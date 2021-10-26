@@ -12,18 +12,20 @@ namespace CRM_Crud.Controllers
     public class LeadController : Controller
     {
         public ILeadRepository LeadRepository;
-        public IErroFiltro ErroFiltro;
+        public ILeadFiltro LeadFiltro;
+        public IInscricaoFiltro InscricaoFiltro;
 
-        public LeadController(ILeadRepository _LeadRepository, IErroFiltro _ErroFiltro)
+        public LeadController(ILeadRepository _LeadRepository, ILeadFiltro _LeadFiltro, IInscricaoFiltro _InscricaoFiltro)
         {
             LeadRepository = _LeadRepository;
-            ErroFiltro = _ErroFiltro;
+            LeadFiltro = _LeadFiltro;
+            InscricaoFiltro = _InscricaoFiltro;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            return View(LeadRepository.ListarLeads());
+            return Ok(View(LeadRepository.ListarLeads()));
         }
 
         [HttpGet]
@@ -37,11 +39,11 @@ namespace CRM_Crud.Controllers
         {
             if (!string.IsNullOrEmpty(pesquisa))
             {
-                return View("Index", LeadRepository.Pesquisar(campo, pesquisa));
+                return Ok(View("Index", LeadRepository.Pesquisar(campo, pesquisa)));
             }
             else
             {
-                return View("Index", LeadRepository.ListarLeads()); 
+                return BadRequest(View("Index", LeadRepository.ListarLeads())); 
             }
         }
 
@@ -57,7 +59,7 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                ErroFiltro.VerificaSeAlgumDadoDoLeadEstaVazio(Lead);
+                LeadFiltro.VerificaSeAlgumDadoDoLeadEstaVazio(Lead);
 
                 LeadRepository.CriarLead(Lead);
                 TempData["Confirmacao"] = "Lead criado com sucesso!";
@@ -84,18 +86,18 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                ErroFiltro.VerificaSeAlgumDadoDoLeadEstaVazio(Lead);
+                LeadFiltro.VerificaSeAlgumDadoDoLeadEstaVazio(Lead);
 
                 LeadRepository.EditarLead(Lead);
                 TempData["Confirmacao"] = "Lead editado com sucesso!";
 
-                return View("Index", LeadRepository.ListarLeads());
+                return Ok(View("Index", LeadRepository.ListarLeads()));
             }
             catch (Exception e)
             {
                 TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
-                return View("Index", LeadRepository.ListarLeads());
+                return BadRequest(View("Index", LeadRepository.ListarLeads()));
             }
         }
 
@@ -104,18 +106,18 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                ErroFiltro.VerificaSeOLeadEstaInscritoEmAlgumCurso(id);
+                InscricaoFiltro.VerificaSeOLeadEstaInscritoEmAlgumCurso(id);
 
                 LeadRepository.DeletarLead(id);
                 TempData["Confirmacao"] = "Lead excluido com sucesso!";
 
-                return View("Index", LeadRepository.ListarLeads());
+                return Ok(View("Index", LeadRepository.ListarLeads()));
             }
             catch (Exception e)
             {
                 TempData["Erro"] = "Aconteceu um erro! " + e.Message;
 
-                return View("Index", LeadRepository.ListarLeads());
+                return BadRequest(View("Index", LeadRepository.ListarLeads()));
             }
         }
     }

@@ -12,12 +12,14 @@ namespace CRM_Crud.Controllers
     public class CursoController : Controller
     {
         public ICursoRepository cursoRepository;
-        public IErroFiltro ErroFiltro;
+        public ICursoFiltro CursoFiltro;
+        public IInscricaoFiltro InscricaoFiltro;
 
-        public CursoController(ICursoRepository _cursoRepository, IErroFiltro _ErroFiltro)
+        public CursoController(ICursoRepository _cursoRepository, ICursoFiltro _CursoFiltro, IInscricaoFiltro _InscricaoFiltro)
         {
             cursoRepository = _cursoRepository;
-            ErroFiltro = _ErroFiltro;
+            CursoFiltro = _CursoFiltro;
+            InscricaoFiltro = _InscricaoFiltro;
         }
 
         [HttpGet]
@@ -57,7 +59,7 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                ErroFiltro.VerificaSeAlgumDadoDoCursoEstaVazio(curso);
+                CursoFiltro.VerificaSeAlgumDadoDoCursoEstaVazio(curso);
 
                 cursoRepository.CriarCurso(curso);
                 TempData["Confirmacao"] = "Curso criado com sucesso!";
@@ -84,7 +86,7 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                ErroFiltro.VerificaSeAlgumDadoDoCursoEstaVazio(curso);
+                CursoFiltro.VerificaSeAlgumDadoDoCursoEstaVazio(curso);
 
                 cursoRepository.EditarCurso(curso);
                 TempData["Confirmacao"] = "Curso editado com sucesso!";
@@ -104,7 +106,7 @@ namespace CRM_Crud.Controllers
         {
             try
             {
-                ErroFiltro.VerificaSeAlguemSeInscreveuNesseCurso(id);
+                InscricaoFiltro.VerificaSeAlguemSeInscreveuNesseCurso(id);
 
                 cursoRepository.DeletarCurso(id);
                 TempData["Confirmacao"] = "Curso deletado com sucesso!";
