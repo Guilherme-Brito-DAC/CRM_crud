@@ -57,16 +57,18 @@ namespace CRM_Crud.Controllers
         {
             try
             {
+                ErroFiltro.VerificaSeAlgumDadoDoLeadEstaVazio(Lead);
+
                 LeadRepository.CriarLead(Lead);
                 TempData["Confirmacao"] = "Lead criado com sucesso!";
 
-                return View("Index", LeadRepository.ListarLeads());
+                return Ok(View("Index", LeadRepository.ListarLeads()));
             }
             catch (Exception e)
             {
                 TempData["Erro"] = "Aconteceu um erro! " + e.Message;
-
-                return View("Index", LeadRepository.ListarLeads());
+                
+                return BadRequest(View("Index", LeadRepository.ListarLeads()));
             }
         }
 
@@ -82,6 +84,8 @@ namespace CRM_Crud.Controllers
         {
             try
             {
+                ErroFiltro.VerificaSeAlgumDadoDoLeadEstaVazio(Lead);
+
                 LeadRepository.EditarLead(Lead);
                 TempData["Confirmacao"] = "Lead editado com sucesso!";
 

@@ -11,6 +11,16 @@ namespace CRM_Crud
 
         }
 
+        public ApplicationContext() 
+        {
+
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Curso>().HasKey(t => t.id);

@@ -57,6 +57,8 @@ namespace CRM_Crud.Controllers
         {
             try
             {
+                ErroFiltro.VerificaSeAlgumDadoDoCursoEstaVazio(curso);
+
                 cursoRepository.CriarCurso(curso);
                 TempData["Confirmacao"] = "Curso criado com sucesso!";
 
@@ -82,6 +84,8 @@ namespace CRM_Crud.Controllers
         {
             try
             {
+                ErroFiltro.VerificaSeAlgumDadoDoCursoEstaVazio(curso);
+
                 cursoRepository.EditarCurso(curso);
                 TempData["Confirmacao"] = "Curso editado com sucesso!";
 

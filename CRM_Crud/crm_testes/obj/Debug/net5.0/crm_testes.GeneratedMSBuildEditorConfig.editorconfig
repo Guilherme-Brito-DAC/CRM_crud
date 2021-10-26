@@ -6,5 +6,5 @@ build_property.ProjectTypeGuids =
 build_property.PublishSingleFile = 
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
-build_property.RootNamespace = crm_testes
-build_property.ProjectDir = C:\Users\GuilhermeBrito\source\repos\crm_crud\crm_testes\
+build_property.RootNamespace = CRM_testes
+build_property.ProjectDir = D:\Tests\CRM_crud\CRM_Crud\CRM_testes\

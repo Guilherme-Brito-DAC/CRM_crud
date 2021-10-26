@@ -1,4 +1,5 @@
-﻿using CRM_Crud.Repositories;
+﻿using CRM_Crud.Models;
+using CRM_Crud.Repositories;
 using System;
 using System.Linq;
 
@@ -58,6 +59,22 @@ namespace CRM_Crud.Filters
             if (inscricoes >= max_de_inscricoes)
             {
                 throw new Exception("O curso que está tentando se inscrever não possui espaço");
+            }
+        }
+
+        public void VerificaSeAlgumDadoDoCursoEstaVazio(Curso curso)
+        {
+            if (curso.titulo == "" || curso.periodo_letivo == "" || curso.categoria == "")
+            {
+                throw new Exception("O curso precisa de todos os dados preenchidos");
+            }
+        }
+
+        public void VerificaSeAlgumDadoDoLeadEstaVazio(Lead lead)
+        {
+            if (lead.nome == "" || lead.telefone == "" || lead.cpf == "" || lead.email == "")
+            {
+                throw new Exception("O lead precisa de todos os dados preenchidos");
             }
         }
     }
